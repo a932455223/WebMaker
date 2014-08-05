@@ -59,10 +59,10 @@ li {
   width: 200px;
   padding: 0 10px;
   border-radius: 5px;
-  border: 1px solid #ccc; }
+  border: 1px solid #cccccc; }
 
 #leftmenu li.header {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #cccccc;
   color: #999;
   text-align: center;
   font-size: 18px; }
@@ -111,7 +111,7 @@ li {
 .shopheader .info .log {
   width: 40px;
   height: 40px;
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
   border-radius: 3px;
   float: left;
   background-size: 100% 100%;
@@ -180,7 +180,7 @@ li {
   line-height: 70px;
   float: left;
   text-align: center;
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
   font-size: 12px; }
 
 #goods-list li:first-child .good-image {
@@ -242,7 +242,7 @@ ul.nav li:first-child {
 
 #right-box .body {
   width: 200px;
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
   border-radius: 5px 5px 0 0; }
 
 #right-box .header {
@@ -253,7 +253,59 @@ ul.nav li:first-child {
   width: 180px;
   height: 30px;
   border-radius: 5px;
-  border: 1px solid #ccc; }
+  border: 1px solid #cccccc; }
 
 .tmpl-container {
   display: none; }
+
+/*****simo.du 8月5日********/
+.mobile-verify {
+  margin-top: 40px; }
+
+.form-group {
+  width: 300px;
+  margin: 0 auto; }
+
+.form-group .form-control {
+  margin-bottom: 25px; }
+
+.input {
+  height: 38px;
+  line-height: 38px;
+  border: 1px solid #ccc; }
+
+.fl {
+  float: left; }
+
+.btn {
+  display: inline-block;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  padding: 0 5px;
+  border: 1px solid #cccccc;
+  background: -webkit-linear-gradient(top, #cccccc, white);
+  background: -moz-linear-gradient(top, #cccccc, white); }
+
+.btn.btn-lg {
+  width: 260px; }
+
+.txt-center {
+  text-align: center; }
+
+.form-group .form-control .yz {
+  margin-left: 30px; }
+
+.fl.input {
+  width: 180px; }
+
+.hd {
+  font-size: 18px;
+  font-weight: bold; }
+
+.location .item {
+  height: 35px;
+  line-height: 35px;
+  padding: 4px 5px;
+  border: none;
+  border-bottom: 1px solid #cccccc; }
