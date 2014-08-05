@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1" name="viewport" />
+    <title>测试页面</title>
+    <link href="css/draggable.css" media="screen" rel="stylesheet" />
+    <link rel="stylesheet/less" href="css/popover.less" />
+</head>
+
+<body>
+    <div class="clearfix" id="main-body">
+        <div class="leftbox padding-top">
+            <ul id="leftmenu">
+                <li class="header">添加组件</li>
+                <li id="add-ShopInfo">店铺信息</li>
+                <li id="add-txt-header">文本导航</li>
+                <li id="add-goods">商品列表</li>
+                <li id="add-footerMenu">底部菜单</li>
+                <li>图片导航</li>
+                <li>橱窗</li>
+            </ul>
+        </div>
+        <div class="leftbox">
+            <div id="mobile">
+                <div id="mobile-hearder"></div>
+                <div id="mobile-body">
+                    <div class="page-title module" data-appid="pageTitle"></div>
+                    <div id="drag-wrap"></div>
+	                <div id="mobile-footer" class="module" data-appid="mobileFooter"></div>
+                </div>
+            </div>
+            <div class="footer"></div>
+        </div>
+        <!-- popover begin -->
+        <div id="popover">
+        	<div class="popover-inner">
+
+        	</div>
+        </div>
+        <!-- popover end -->
+    </div>
+    <div class="tmpl-container">
+        <div id="header">
+            <div class="shopheader module" data-appid="shopHeader">
+                <div class="info clearfix">
+                    <div class="log"></div>
+                    <div class="infotxt">XXXX的店铺
+                        <br />触动你的心，成就你们梦想</div>
+                </div>
+            </div>
+        </div>
+        <div id="txt-header">
+            <div class="module" data-appid="txtHeader">
+                <ul class="txt-header clearfix">
+                    <li>生活改良</li>
+                    <li>办公文具</li>
+                    <li>文化装饰</li>
+                    <li>个性装备</li>
+                </ul>
+            </div>
+        </div>
+        <div id="goods">
+            <div class="goods module" data-appid="goods">
+                <ul class="hidden" id="goods-big">
+                    <li>第一个商品</li>
+                    <li>第二个商品</li>
+                    <li>第三个商品</li>
+                </ul>
+                <ul class="clearfix hidden" id="goods-small">
+                    <li>第一个商品</li>
+                    <li>第二个商品</li>
+                    <li>第三个商品</li>
+                    <li>第四个商品</li>
+                </ul>
+                <ul id="goods-list">
+                    <li>
+                        <div class="good-image">第二个商品</div>
+                        <div class="good-txt">
+                            <p class="up">此处显示商品名称</p>
+                            <p class="down">￥6.0</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="good-image">第二个商品</div>
+                        <div class="good-txt">
+                            <p class="up">此处显示商品名称</p>
+                            <p class="down">￥6.0</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="good-image">第二个商品</div>
+                        <div class="good-txt">
+                            <p class="up">此处显示商品名称</p>
+                            <p class="down">￥6.0</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="footerMenu">
+            <ul class="nav clearfix">
+                <li>购物车</li>
+                <li>购物车</li>
+                <li>购物车</li>
+                <li>购物车</li>
+            </ul>
+        </div>
+    </div>
+    <div id="popoverContent">
+    	<div class="pageTitle">
+    		<form action="">
+    			<label for="" class="control-label">页面名称:</label>
+    			<div class="control">
+    				<input class="input-l" type="text" value="我的微店" />
+    			</div>
+    		</form>    		
+    	</div>
+    	<div class="shopHeader">
+    		<form action="">
+				<h1>shopHeader</h1>
+    		</form>    		
+    	</div>
+    	<div class="txtHeader">
+    		<form action="">
+				<h1>txtHeader</h1>	
+    		</form>    		
+    	</div>    
+    	<div class="goods">
+    		<form action="">
+    			<h1>goods</h1>	
+    		</form>    		
+    	</div>     	  	    	
+    	<div class="mobileFooter">
+    		<form action="">
+    			<h1>mobileFooter</h1>	
+    		</form>    		
+    	</div>     	  	    	
+    </div>
+    <div id="footer">
+        <script src="js/jquery.js?body=1"></script>
+
+        <script src="js/JQueryUI/jquery-ui.min.js?body=1"></script>
+
+        <script src="js/jquery.tmpl.js?body=1"></script>
+
+        <script src="js/draggable.js?body=1"></script>
+        <script src="js/less-1.7.0.min.js"></script>
+        <script src="js/popover.js"></script>
+        
+    </div>
+</body>
+
+</html>
