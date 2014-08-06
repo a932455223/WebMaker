@@ -50,7 +50,8 @@ li {
 
 .footer {
   background: url("mobile_footer.jpg") no-repeat;
-  height: 123px; }
+  height: 123px; 
+}
 
 .padding-top {
   padding-top: 250px; }
@@ -59,16 +60,21 @@ li {
   width: 200px;
   padding: 0 10px;
   border-radius: 5px;
-  border: 1px solid #cccccc; }
+  border: 1px solid #cccccc; 
+}
+
 
 #leftmenu li.header {
-  border-bottom: 1px solid #cccccc;
+  border-bottom: 1px solid #ccc;
   color: #999;
   text-align: center;
-  font-size: 18px; }
-  #leftmenu li.header:hover {
-    color: #999;
-    cursor: default; }
+  font-size: 18px;
+}
+
+#leftmenu li.header:hover {
+  color: #999;
+  cursor: default; 
+}
 
 #leftmenu li {
   height: 30px;
@@ -101,7 +107,8 @@ li {
   height: 110px;
   position: relative;
   background: url("shopheader.jpg") no-repeat;
-  -moz-box-sizing: border-box; }
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box; }
 
 .shopheader .info {
   position: absolute;
@@ -111,7 +118,7 @@ li {
 .shopheader .info .log {
   width: 40px;
   height: 40px;
-  border: 1px solid #cccccc;
+  border: 1px solid #ccc;
   border-radius: 3px;
   float: left;
   background-size: 100% 100%;
@@ -213,12 +220,13 @@ li {
 #mobile-footer {
   position: absolute;
   bottom: 0px;
+  left: 0;
   z-index: 999;
   width: 100%; }
 
 ul.nav {
   width: 100%;
-  padding: 0 23px 0 25px;
+  padding: 0 48px 0 0px;
   box-sizing: border-box; }
 
 ul.nav li {
@@ -229,7 +237,10 @@ ul.nav li {
   width: 25%;
   box-sizing: border-box;
   font-size: 14px;
-  background: -webkit-linear-gradient(top, #cccccc, #dddddd); }
+  background: -webkit-linear-gradient(top, #cccccc, #dddddd); 
+  background: -webkit-linear-gradient(top, #cccccc, #dddddd); 
+  background: -ms-linear-gradient(top, #cccccc, #dddddd); 
+}
 
 ul.nav li {
   border-left: 1px solid #fff; }
@@ -242,7 +253,7 @@ ul.nav li:first-child {
 
 #right-box .body {
   width: 200px;
-  border: 1px solid #cccccc;
+  border: 1px solid #ccc;
   border-radius: 5px 5px 0 0; }
 
 #right-box .header {
@@ -253,7 +264,8 @@ ul.nav li:first-child {
   width: 180px;
   height: 30px;
   border-radius: 5px;
-  border: 1px solid #cccccc; }
+  border: 1px solid #cccccc; 
+}
 
 .tmpl-container {
   display: none; }
@@ -308,4 +320,9 @@ ul.nav li:first-child {
   line-height: 35px;
   padding: 4px 5px;
   border: none;
-  border-bottom: 1px solid #cccccc; }
+  border-bottom: 1px solid #cccccc; 
+}
+
+.tmpl-container {
+  display: none;
+}
