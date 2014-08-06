@@ -126,7 +126,7 @@
                 </div>
             </div>
         </div>
-        <div id="location">
+        <div id="location" data-appid="location">
             <div class="location">
                 <div class="item hd">上海 ></div>
                 <div class="item">黄浦区</div>
@@ -143,17 +143,16 @@
     <div id="popoverContent">
     	<div class="pageTitle">
     		<form action="">
-    			<label for="" class="control-label">页面名称:</label>
-    			<div class="control">
-    				<input class="input-l" type="text" value="我的微店" />
+    			<div class="control-group">
+    				<label for="" class="control-label">页面名称：</label>
+    				<div class="control">
+    					<input class="input-l" type="text" value="我的微店" />
+    				</div>
     			</div>
     		</form>    		
     	</div>
     	<div class="shopHeader">
-    		<form action="">
-				<div id="dialog" title="Basic dialog">
-				  <p>This is the default dialog whichth the 'x' icon.</p>
-				</div>    			
+    		<form action="">			
 				<h1 id="opener"><a href="#">shopHeader</a></h1>
     		</form>    		
     	</div>
@@ -165,14 +164,34 @@
     	<div class="goods">
     		<form action="">
     			<div class="control-group">
-    				<label for="" class="control-label">显示方式:</label>
+    				<label for="" class="control-label">显示方式：</label>
     				<div class="control">
-    					<label for="" class="radio inline"><input type="radio" />大图</label>
-    					<label for="" class="radio inline"><input type="radio" />小图</label>
-    					<label for="" class="radio inline"><input type="radio" />一大两小</label>
-    					<label for="" class="radio inline"><input type="radio" />列表</label>
+    					<label for="" class="radio inline"><input type="radio" name="size" />大图</label>
+    					<label for="" class="radio inline"><input type="radio" name="size" />小图</label>
+    					<label for="" class="radio inline"><input type="radio" name="size" />一大两小</label>
+    					<label for="" class="radio inline"><input type="radio" name="size" />列表</label>
     				</div>
     			</div>
+    			<div class="control-group">
+    				<label for="" class="control-label">商品名：</label>
+    				<div class="control">
+    					<label for="" class="radio inline"><input type="checkbox" name="title" />显示商品名（小图的时候不会显示商品名）</label>
+    				</div>
+    			</div>    			
+    			<div class="control-group">
+    				<label for="" class="control-label">价格：</label>
+    				<div class="control">
+    					<label for="" class="radio inline"><input type="checkbox" name="price" />显示价格</label>
+    					<label for="" class="radio inline"><input type="checkbox" name="price" />显示购物车图标</label>
+    				</div>
+    			</div>    			
+    			<div class="control-group">
+    				<label for="" class="control-label">选择来源：</label>
+    				<div class="control">
+    					<a class="dialog" href="#" data-appid="goodsDialog">+从商品标签或微杂志中选择</a>
+    					<p class="hint">选择商品来源后，左侧实时预览暂不支持显示其包含的商品数据</p>
+    				</div>
+    			</div>    			
     		</form>    		
     	</div>     	  	    	
     	<div class="mobileFooter">
@@ -180,6 +199,12 @@
     			<h1>mobileFooter</h1>	
     		</form>    		
     	</div>     	  	    	
+    </div>
+    <div id="dialogContent">
+		<div id="goodsDialog" title="test">
+		  <p>This is the default dialog whichth the 'x' icon.</p>
+		</div>   
+    	
     </div>
     <div id="footer">
         <script src="js/jquery.js?body=1"></script>

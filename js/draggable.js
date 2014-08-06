@@ -1,4 +1,12 @@
-$('#drag-wrap').sortable();
+$('#drag-wrap').sortable({
+	stop:function(){
+		//拖动时重新定位编辑框
+		if(popover.target){
+			popover.posTop = popover.target.offsetTop;
+			popover.pos();
+		}
+	}
+});
 
 $('#add-ShopInfo').click(function(){
 	$($('#header').html()).appendTo('#drag-wrap');

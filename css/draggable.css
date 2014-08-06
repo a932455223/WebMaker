@@ -225,8 +225,9 @@ li {
   width: 100%; }
 
 ul.nav {
-  width: 100%;
-  padding: 0 48px 0 0px;
+	margin:0 auto;
+  width: 321px;
+  padding-left: 1px;
   box-sizing: border-box; }
 
 ul.nav li {

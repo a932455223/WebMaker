@@ -7,29 +7,31 @@ var popover = {
 	layoutWrap:document.getElementById("popover"),
 	posTop:0,
 	target:null,
-	moduleId:null
+	moduleId:null,
 };
-popover.pos = function(){
-	this.layoutWrap.style.top = this.posTop + "px";
+popover.pos = function(){	
+	// this.layoutWrap.style.top = this.posTop + "px";
+	$(this.layoutWrap).animate({top:this.posTop + "px"},300) ;
 	return this;
 };
 popover.loadContent = function(){
+	this.moduleId = this.target.dataset.appid;
 	var tmpl = $("#popoverContent").find("."+this.moduleId),
 		DEBUG = {"name":"liege"};
 	$.template("controlTmpl",tmpl);
 	 $(".popover-inner").html($.tmpl("controlTmpl",DEBUG));	
 };
 $("#mobile-body").on("click",".module",function(e){
+	$("#popover").show();
 	popover.target = e.currentTarget;
-	popover.moduleId = e.currentTarget.dataset.appid;
-	popover.posTop = e.currentTarget.offsetTop;
+	popover.posTop = e.currentTarget.offsetTop;	
 	popover.pos().loadContent();
 	return false;
 });
 
 //dialog
 $(function() {
-   $( "#dialog" ).dialog({
+   $("#dialog").dialog({
       autoOpen: false,
       draggable:false,
       show: {
@@ -42,7 +44,10 @@ $(function() {
       }
     });
  
-    $( ".popover-inner" ).on("click","#opener",function() {
-      $( "#dialog" ).dialog( "open" );
+    $(".popover-inner").on("click",".dialog",function(e){
+    	var elem = e.currentTarget;
+        $("#"+elem.dataset.appid).dialog({
+        	draggable:false
+        });
     });
 });
