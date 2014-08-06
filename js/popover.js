@@ -30,24 +30,24 @@ $("#mobile-body").on("click",".module",function(e){
 });
 
 //dialog
-$(function() {
-   $("#dialog").dialog({
-      autoOpen: false,
-      draggable:false,
-      show: {
-        effect: "blind",
-        duration: 1000
-      },
-      hide: {
-        effect: "explode",
-        duration: 1000
-      }
-    });
- 
+$(function() { 
     $(".popover-inner").on("click",".dialog",function(e){
     	var elem = e.currentTarget;
-        $("#"+elem.dataset.appid).dialog({
-        	draggable:false
-        });
+		var d = dialog({
+			title: '消息',
+			content:  $("#"+elem.dataset.appid).html(),
+			okValue: '确 定',
+			ok: function () {
+				var that = this;
+				setTimeout(function () {
+					that.title('提交中..');
+				}, 2000);
+				return false;
+			},
+			cancelValue: '取消',
+			cancel: function () {}
+		});
+
+		d.show();        
     });
 });
