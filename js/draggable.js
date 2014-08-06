@@ -15,3 +15,12 @@ $('#add-goods').click(function(){
 $('#add-footerMenu').click(function(){
 	$($('#footerMenu').html()).appendTo('#mobile-footer');
 });
+/***simon.du 8月5日***/
+$('#add-mobileVerify').click(function(){
+	$($('#mobile-verify').html()).appendTo('#drag-wrap');
+});
+
+$('#add-location').click(function(){
+	console.log($('#location').length);
+	$($('#location').html()).appendTo('#drag-wrap');
+});

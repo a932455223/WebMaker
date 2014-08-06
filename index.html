@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8" />
     <meta content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1" name="viewport" />
@@ -9,24 +8,27 @@
     <link href="css/jquery-ui.css" media="screen" rel="stylesheet" />
     <link rel="stylesheet/less" href="css/popover.less" />
 </head>
-
 <body>
     <div class="clearfix" id="main-body">
         <div class="leftbox padding-top">
             <ul id="leftmenu">
                 <li class="header">添加组件</li>
                 <li id="add-ShopInfo">店铺信息</li>
-                <li id="add-txt-header">文本导航</li>
                 <li id="add-goods">商品列表</li>
+                <li id="add-txt-header">文本导航</li>
                 <li id="add-footerMenu">底部菜单</li>
                 <li>图片导航</li>
                 <li>橱窗</li>
+                <li id="add-mobileVerify">短信验证</li>
+                <li id="add-location">选择地址</li>
+
             </ul>
         </div>
         <div class="leftbox">
             <div id="mobile">
                 <div id="mobile-hearder"></div>
                 <div id="mobile-body">
+
                     <div class="page-title module" data-appid="pageTitle"></div>
                     <div id="drag-wrap"></div>
 	                <div id="mobile-footer" class="module" data-appid="mobileFooter"></div>
@@ -108,6 +110,35 @@
                 <li>购物车</li>
             </ul>
         </div>
+        <div id="mobile-verify">
+            <div class="mobile-verify">
+                <div class="form-group">
+                    <div class="form-control clearfix">
+                        <div class="input fl"></div>
+                        <span class="btn fl yz">获取验证码</span>
+                    </div>
+                    <div class="form-control">
+                        <div class="input"></div>
+                    </div>
+                    <div class="form-control txt-center">
+                        <span class="btn btn-lg">立即领取</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="location">
+            <div class="location">
+                <div class="item hd">上海 ></div>
+                <div class="item">黄浦区</div>
+                <div class="item">卢湾区</div>
+                <div class="item">徐汇区</div>
+                <div class="item">长宁区</div>
+                <div class="item">静安寺</div>
+                <div class="item">普陀区</div>
+                <div class="item">闸北区</div>
+                <div class="item">虹口区</div>
+            </div>
+        </div>
     </div>
     <div id="popoverContent">
     	<div class="pageTitle">
@@ -159,5 +190,4 @@
         <script src="js/popover.js"></script>
     </div>
 </body>
-
 </html>
