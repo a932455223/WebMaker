@@ -34,7 +34,6 @@
 			text-align:right;
 			display: block;
 			float: left;
-			width: 87px;
 			padding-top: 5px;
 			line-height: 18px;
 		}		
@@ -56,6 +55,28 @@
 		}
 		.control{
 			margin-left: 93px;
+		}
+		.control-label{
+			width: 87px;
+		}
+		.control-group{
+			overflow: hidden;
+			margin-bottom: 10px;
+			&:after{
+				clear: both;
+			}
+		}
+		.radio{
+			padding:5px 0 0 16px;
+			margin-left: 10px;
+			display: inline-block;
+			vertical-align: middle;
+			input[type="radio"]{
+				width: auto;
+				display:inline-block;
+				margin-left: -16px;
+				
+			}
 		}
 	}	
 }

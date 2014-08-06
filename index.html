@@ -6,6 +6,7 @@
     <meta content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1" name="viewport" />
     <title>测试页面</title>
     <link href="css/draggable.css" media="screen" rel="stylesheet" />
+    <link href="css/jquery-ui.css" media="screen" rel="stylesheet" />
     <link rel="stylesheet/less" href="css/popover.less" />
 </head>
 
@@ -119,7 +120,10 @@
     	</div>
     	<div class="shopHeader">
     		<form action="">
-				<h1>shopHeader</h1>
+				<div id="dialog" title="Basic dialog">
+				  <p>This is the default dialog whichth the 'x' icon.</p>
+				</div>    			
+				<h1 id="opener"><a href="#">shopHeader</a></h1>
     		</form>    		
     	</div>
     	<div class="txtHeader">
@@ -129,7 +133,15 @@
     	</div>    
     	<div class="goods">
     		<form action="">
-    			<h1>goods</h1>	
+    			<div class="control-group">
+    				<label for="" class="control-label">显示方式:</label>
+    				<div class="control">
+    					<label for="" class="radio inline"><input type="radio" />大图</label>
+    					<label for="" class="radio inline"><input type="radio" />小图</label>
+    					<label for="" class="radio inline"><input type="radio" />一大两小</label>
+    					<label for="" class="radio inline"><input type="radio" />列表</label>
+    				</div>
+    			</div>
     		</form>    		
     	</div>     	  	    	
     	<div class="mobileFooter">
@@ -140,15 +152,11 @@
     </div>
     <div id="footer">
         <script src="js/jquery.js?body=1"></script>
-
         <script src="js/JQueryUI/jquery-ui.min.js?body=1"></script>
-
         <script src="js/jquery.tmpl.js?body=1"></script>
-
         <script src="js/draggable.js?body=1"></script>
         <script src="js/less-1.7.0.min.js"></script>
         <script src="js/popover.js"></script>
-        
     </div>
 </body>
 
