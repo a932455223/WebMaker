@@ -79,6 +79,13 @@
 				line-height: 18px;
 				padding-top: 5px;
 			}
+			.hint{
+				font-size:12px;
+				opacity: 0.6;
+				&:hover{
+					opacity: 1;
+				}
+			}
 		}
 		.radio,.inline{
 			padding:5px 10px 0 0;
@@ -100,3 +107,31 @@
 #popoverContent{display: none;}
 /*dialog内容容器*/
 #dialogContent{display: none;}
+
+
+/*append style*/
+#goods-three{
+  	width: 310px;
+  	margin: 0 auto;	
+	li{
+	  width: 150px;
+	  height: 150px;
+	  line-height: 150px;
+	  text-align: center;
+	  margin-bottom: 5px;
+	  background: #f5619c;
+	  float: left; 
+		&:nth-child(odd){
+			margin-left: 5px; 
+		}		
+		&:first-child{
+		    width: 310px;
+		    height: 310px;
+		    margin-bottom: 8px;
+		    background: #f5619c;
+		    line-height: 310px;
+		    text-align: center;
+		    margin-left: 0;
+		}
+	}
+}

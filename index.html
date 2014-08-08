@@ -29,7 +29,9 @@
                 <div id="mobile-hearder"></div>
                 <div id="mobile-body">
 
-                    <div class="page-title module" data-appid="pageTitle"></div>
+                    <div class="page-title module" data-appid="pageTitle">
+                    	
+                    </div>
                     <div id="drag-wrap"></div>
 	                <div id="mobile-footer" class="module" data-appid="mobileFooter"></div>
                 </div>
@@ -76,6 +78,11 @@
                     <li>第二个商品</li>
                     <li>第三个商品</li>
                     <li>第四个商品</li>
+                </ul>
+                <ul class="clearfix hidden" id="goods-three">
+                    <li>第一个商品</li>
+                    <li>第二个商品</li>
+                    <li>第三个商品</li>
                 </ul>
                 <ul id="goods-list">
                     <li>
@@ -141,6 +148,7 @@
         </div>
     </div>
     <div id="popoverContent">
+    	<!-- 页面标题 -->
     	<div class="pageTitle">
     		<form action="">
     			<div class="control-group">
@@ -151,38 +159,52 @@
     			</div>
     		</form>    		
     	</div>
+    	<!-- 店铺信息 -->
     	<div class="shopHeader">
     		<form action="">			
-				<h1 id="opener"><a href="#">shopHeader</a></h1>
+    			<div class="control-group">
+    				<label for="" class="control-label">店铺标题：</label>
+    				<div class="control">
+    					<input class="input-l" type="text" value="显示店铺的名称" />
+    				</div>
+    			</div>
+    			<div class="control-group">
+    				<label for="" class="control-label">店铺描述：</label>
+    				<div class="control">
+    					<input class="input-l" type="text" value="一句短语描述店铺" />
+    				</div>
+    			</div>
     		</form>    		
     	</div>
+    	<!-- 文本导航 -->
     	<div class="txtHeader">
     		<form action="">
 				<h1>txtHeader</h1>	
     		</form>    		
     	</div>    
+    	<!-- 商品列表 -->
     	<div class="goods">
     		<form action="">
     			<div class="control-group">
     				<label for="" class="control-label">显示方式：</label>
     				<div class="control">
-    					<label for="" class="radio inline"><input type="radio" name="size" />大图</label>
-    					<label for="" class="radio inline"><input type="radio" name="size" />小图</label>
-    					<label for="" class="radio inline"><input type="radio" name="size" />一大两小</label>
-    					<label for="" class="radio inline"><input type="radio" name="size" />列表</label>
+    					<label for="" class="radio inline"><input type="radio" name="size" value="0" />大图</label>
+    					<label for="" class="radio inline"><input type="radio" name="size" value="1" />小图</label>
+    					<label for="" class="radio inline"><input type="radio" name="size" value="2" />一大两小</label>
+    					<label for="" class="radio inline"><input type="radio" name="size" value="3" checked="" />列表</label>
     				</div>
     			</div>
     			<div class="control-group">
     				<label for="" class="control-label">商品名：</label>
     				<div class="control">
-    					<label for="" class="radio inline"><input type="checkbox" name="title" />显示商品名（小图的时候不会显示商品名）</label>
+    					<label for="" class="radio inline"><input type="checkbox" name="title" value="0" />显示商品名（小图的时候不会显示商品名）</label>
     				</div>
     			</div>    			
     			<div class="control-group">
     				<label for="" class="control-label">价格：</label>
     				<div class="control">
-    					<label for="" class="radio inline"><input type="checkbox" name="price" />显示价格</label>
-    					<label for="" class="radio inline"><input type="checkbox" name="price" />显示购物车图标</label>
+    					<label for="" class="radio inline"><input type="checkbox" name="price" value="0" />显示价格</label>
+    					<label for="" class="radio inline"><input type="checkbox" name="price" value="1" />显示购物车图标</label>
     				</div>
     			</div>    			
     			<div class="control-group">
@@ -191,20 +213,30 @@
     					<a class="dialog" href="#" data-appid="goodsDialog">+从商品标签或微杂志中选择</a>
     					<p class="hint">选择商品来源后，左侧实时预览暂不支持显示其包含的商品数据</p>
     				</div>
-    			</div>    			
+    			</div>  
+    			<div class="control-group">
+    				<label for="" class="control-label">显示数量：</label>
+    				<div class="control">
+    					<label for="" class="radio inline"><input type="radio" name="goods_number_type" value="0" checked="" />6</label>
+    					<label for="" class="radio inline"><input type="radio" name="goods_number_type" value="1" />12</label>
+    					<label for="" class="radio inline"><input type="radio" name="goods_number_type" value="2" />18</label>
+    				</div>
+    			</div>    			  			
     		</form>    		
-    	</div>     	  	    	
+    	</div>     	  	    
+    	<!-- 底部菜单	 -->
     	<div class="mobileFooter">
     		<form action="">
     			<h1>mobileFooter</h1>	
     		</form>    		
     	</div>     	  	    	
     </div>
+    <!-- 弹窗内容 -->
     <div id="dialogContent">
+    	<!-- 商品列表 -->
 		<div id="goodsDialog" title="test">
 		  <p>This is the default dialog whichth the 'x' icon.</p>
 		</div>   
-    	
     </div>
     <div id="footer">
         <script src="js/jquery.js?body=1"></script>
