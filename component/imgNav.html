@@ -1,0 +1,10 @@
+<div class="imgNav">
+	<ul class="imgNavList">
+		{%for item in list%}
+			<li>
+				<img src='{{item.src}}'/>
+				<span>{{item.text}}<span>
+			</li>
+		{%endfor%}
+	</ul>
+</div>

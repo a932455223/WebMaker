@@ -1,0 +1,193 @@
+/**** phone_bd里的内容 ***/
+@fontSize-sm:12px;
+@fontSize-md:14px;
+@fontSize-lg:18px;
+@gray:#ccc;
+@border-default:1px solid @gray;
+ #editor_title{
+	background: url('../images/page-title.png') no-repeat;
+	background-size: 100% 100%;
+	height: 70px;
+}
+ul{
+	padding:0;
+	margin: 0;
+}
+li{
+	list-style: none;
+}
+// clearfix
+.clearfix{
+	*zoom:1;
+}
+
+.clearfix:before,.clearfix:after{
+	display: table;
+	content: '';
+}
+
+.clearfix:after{
+	clear: both;
+	overflow: hidden;
+}
+//end clearfix
+
+.width(@w) when (@w = 'sm'){
+	width: 30%;
+}
+
+.width(@w) when (@w = 'md'){
+	width: 60%;
+}
+
+.width(@w) when (@w = 'lg'){
+	width: 90%;
+}
+
+.width(@w) when (isnumber(@w)){
+	width: @w;
+}
+.text_center{
+	text-align: center;
+}
+
+.blank{
+	height: 15px;
+}
+.row{
+	padding:0 5%;
+}
+
+.input{
+		border:@border-default;
+		height: 35px;
+		background: #fff;
+	}
+
+.fl{
+	float: left;
+}
+
+.base_btn{
+		display: inline-block;
+		text-align: center;
+		border: @border-default;
+		border-radius:0;
+		cursor: default;
+		height: 35px;
+		line-height: 35px;
+	}
+
+#editor_body{
+	&>li{
+		cursor: move;
+		border:1.5px solid #fff;
+		position: relative;
+		&.current{
+			// border:1.5px dashed red;
+		}
+	}
+	.get_code{
+		.base_btn;
+		.width(30%);
+		margin-left: 8.5%;
+	}
+
+	.phone_number{
+		.input;
+		.width(60%);
+	}
+
+	.input_code{
+		.input;
+		.width(100%);
+	}
+
+	.get_immediately{
+		.base_btn;
+		.width(90%);
+	}
+
+	.img img{
+		width: 100%;
+	}
+
+	.fullText {
+		padding: 8px 10px;
+		font-size: @fontSize-lg;
+		color:@gray;
+	}
+
+	.msgVerify{
+
+	}
+}
+
+.tmpl_container{
+	display: none;
+}
+
+.table{
+	background:#ccc;
+}
+
+.table td{
+	width:50px;
+	height: 50px;
+	background: #fff;
+}
+
+.phone-editor{
+	background: #fff;
+	margin-top: 20px;
+}
+
+.edit-magicBox{
+	margin-top:20px;
+}
+
+#edit-tb td{
+	height: 30px;
+	line-height: 30px;
+}
+
+.list li{
+	float: left;
+}
+
+.link{
+	color:#07d;
+	font-size:12px;
+}
+/**魔方的css开始**/
+#magicTable{
+	width: 205px;
+	height: 205px;
+	position: relative;
+	background: #696969;
+	-moz-user-select:none;
+	-webkit-user-select:none;
+	-mz-user-select:none;
+}
+
+#magicBox-img{
+	width:100px;
+	cursor:pointer;
+}
+
+#magicTable .item{
+	width:50px;
+	height:50px;
+	background:#fff;
+	position: absolute;
+	border:none;
+}
+
+#magicTable .selected{
+	background: rgba(29, 113, 239,0.8);
+}
+#magicTable .keyactive{
+	background: rgba(255,199,0, 0.6);
+}
+/**魔方的css结束**/
+

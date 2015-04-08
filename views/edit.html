@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="/css/common.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet"  href="/css/draggable.css" />
+<link rel="stylesheet"  href="/css/popover.css" />
+<link rel="stylesheet"  href="/css/phone-editor.css">
+<link href="/css/ui-dialog.css" media="screen" rel="stylesheet" />
+</head>
+<body>
+<header class="header">
+	<div class="header_container">
+		<a class="logo" href="#"></a>
+		<nav class="header_nav">
+			<ul>
+				<li><a href="#">社交媒体</a></li>
+				<li><a href="#">商品</a></li>
+				<li><a href="#">店铺</a></li>
+				<li><a href="#">官网</a></li>
+				<li><a href="#">订单</a></li>
+				<li><a href="#">客户</a></li>
+				<li class="active"><a href="#">营销</a></li>
+				<li><a href="#">数据</a></li>
+			</ul>
+		</nav>
+		<section class="iconBox">
+			<a href="#" class="header_icon">
+				<i class="no1"></i>
+				<span class="news_number">1</span>
+			</a>
+			<a href="#" class="header_icon">
+				<i class="no2"></i>
+			</a>
+			<a href="#" class="header_icon">
+				<i class="no3"></i>
+			</a>
+		</section>
+	</div>
+</header>
+<div class="wrap">
+	<div class="left_menu">
+		<a href="#" class="btn btn_primary">添加活动</a>
+		<ul>
+			<li>
+				<a class="active" href="javascript:void(0);">活动管理<span></span></a>
+				<dl style="display:block">
+					<dd>
+						<a href="#">待发布活动<em>(10)</em></a>
+					</dd>
+					<dd>
+						<a href="#">发布中活动<em>(10)</em></a>
+					</dd>
+					<dd>
+						<a href="#">已发布活动<em>(10)</em></a>
+					</dd>
+				</dl>
+			</li>
+		</ul>
+	</div>
+	<div id="main" class="main no-tab">
+		<div class="nav_wrap">
+			<ul>
+				<li class="nav_wrap_item active">1、创建活动</li>
+				<li class="nav_wrap_item active">2、选择模板</li>
+				<li class="nav_wrap_item active">3、活动设计</li>
+				<li class="nav_wrap_item">4、完成</li>
+			</ul>
+		</div>
+		<div class="dash_bar">
+			<ul>
+				<li class="active opr_save">
+					<div class="step_item">
+						<strong class="step_num">1</strong>
+						<p>活动预热</p>
+						<span class="save_success"><i class="icon20_common icon_success"></i></span>
+					</div>
+				</li>
+				<li>
+					&nbsp;
+					<div class="step_arrow"><i class="icon24_common icon_rarrow"></i></div>
+				</li>
+				<li class="opr_save">
+					<div class="step_item">
+						<strong class="step_num">2</strong>
+						<p>手机验证</p>
+						<span class="save_success"><i class="icon20_common icon_success"></i></span>
+					</div>
+				</li>
+				<li>
+					&nbsp;
+					<div class="step_arrow"><i class="icon24_common icon_rarrow"></i></div>
+				</li>
+				<li>
+					<div class="step_item">
+						<strong class="step_num">3</strong>
+						<p>选择门店</p>
+						<span class="save_success"><i class="icon20_common icon_success"></i></span>
+					</div>
+				</li>
+				<li>
+					&nbsp;
+					<div class="step_arrow"><i class="icon24_common icon_rarrow"></i></div>
+				</li>
+				<li class="opr_save">
+					<div class="step_item">
+						<strong class="step_num">4</strong>
+						<p>领取成功</p>
+						<span class="save_success"><i class="icon20_common icon_success"></i></span>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="appmsg_edit">
+			<div class="phone_preview">
+				<div class="phone_hd">
+					<a class="oprpage" id="prev" href="javascript:void(0);">上一页</a>
+					<a class="oprpage next" id="next" href="javascript:void(0);">下一页</a>
+				</div>
+				<div class="phone_bd">
+					<div id='editor_title' contenteditable class='page_title'>这里编辑标题</div>
+					<ul id='editor_body'>
+						
+					</ul>
+				</div>
+				<div class="add_field">
+					<h4>添加内容</h4>
+					<ul id="btn_container">
+						
+					</ul>
+				</div>
+			</div>
+        <!-- popover begin -->
+        <div id="popover" class="area_edit phone_sidebar">
+        	<div class="popover-inner">
+
+        	</div>
+        </div>
+        <!-- popover end -->  
+		</div>
+		<div class="page_bottom tc">
+			<a href="javascript:void(0)" id='btn_complete' class="btn btn_primary">完成</a>
+			<a href="javascript:void(0)" id='btn_preview' class="btn btn_default">预览效果</a>
+		</div>
+	</div>
+</div>
+<div class="alert" style="display:none"><i></i><span>正在处理您的请求...</span></div>
+<div class="tmpl_container">
+	<!-- 商品搜索 -->
+	<script type='text/html' id="goodSearch_tmpl">
+		<li>
+			<div class='goodSearch module'>
+				<div class="row">
+					<div class="input_code search">商品搜索：请输入商品关键字</div>
+				</div>
+			</div>
+		</li>
+	</script>		
+	<!-- 标题 -->
+	<script type='text/html' id="title_tmpl">
+		<li>
+			<div class='title module'>
+				<div class="maxTitle">${maxTitle}</div>
+				<div class="minTitle">${minTitle}</div>
+			</div>
+		</li>
+	</script>	
+	<!-- 辅助空白 -->
+	<script type='text/html' id="blankSpace_tmpl">
+		<li>
+			<div class='blankSpace module' style='height: ${height}'>
+			</div>
+		</li>
+	</script>	
+	<!-- 辅助线 -->
+	<script type='text/html' id="subline_tmpl">
+		<li>
+			<div class='subline module'>
+				<div class="line"></div>
+			</div>
+		</li>
+	</script> 		
+	<!-- 富文本 -->
+	<script type='text/html'  id="fullText_tmpl">
+		<li>
+			<div class='fullText module'>
+				<!--@{{}} content值包含html标签 -->
+				{{html content}}
+			</div>
+		</li>
+	</script>
+	<!-- magicBox -->
+	<script type="text/html" id='magicBox_tmpl'>
+		<li magicform='{}' data-form='{}'>
+							<div class='current module' style='height:45px;'></div>
+		</li>
+	</script>
+	<!-- 图片区域 -->
+	<script type='text/html' id="img_tmpl">
+		<li>
+            <div class="img module ${config.title} ${config.price} ${config.cart}">
+            	{{if config.size==0}}
+                <ul class="goods-big">
+                    <li>第一个商品
+                    	<div class="custom-goods-info"><span class="custom-goods-title">此处显示商品名称</span><em class="custom-goods-price">888.00</em></div>	
+                	</li>
+                    <li>第二个商品
+                    	<div class="custom-goods-info"><span class="custom-goods-title">此处显示商品名称</span><em class="custom-goods-price">888.00</em></div>	
+                	</li>
+                    <li>第三个商品
+                    	<div class="custom-goods-info"><span class="custom-goods-title">此处显示商品名称</span><em class="custom-goods-price">888.00</em></div>	
+                	</li>
+                </ul>
+                {{else config.size==1}}
+                <ul class="clearfix goods-small">
+                    <li>第一个商品
+                    	<div class="custom-goods-info"><em class="custom-goods-price">888.00</em></div>	
+                	</li>
+                    <li>第二个商品
+                    	<div class="custom-goods-info"><em class="custom-goods-price">888.00</em></div>	
+                	</li>
+                    <li>第三个商品
+                    	<div class="custom-goods-info"><em class="custom-goods-price">888.00</em></div>	
+                	</li>
+                    <li>第四个商品
+                    	<div class="custom-goods-info"><em class="custom-goods-price">888.00</em></div>	
+                    	</li>
+                </ul>
+                {{else config.size==2}}
+                <ul class="clearfix goods-three">
+                    <li>第一个商品
+                    	<div class="custom-goods-info"><span class="custom-goods-title">此处显示商品名称</span><em class="custom-goods-price">888.00</em></div>	
+                	</li>
+                    <li>第二个商品
+                    	<div class="custom-goods-info"><em class="custom-goods-price">888.00</em></div>	
+                	</li>
+                    <li>第三个商品
+                    	<div class="custom-goods-info"><em class="custom-goods-price">888.00</em></div>	
+                	</li>
+                </ul>
+                {{else config.size==3}}
+                <ul class="goods-list">
+                    <li>
+                        <div class="good-image">第二个商品</div>
+                        <div class="good-txt">
+                            <p class="up">此处显示商品名称</p>
+                            <p class="down">￥6.0</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="good-image">第二个商品</div>
+                        <div class="good-txt">
+                            <p class="up">此处显示商品名称</p>
+                            <p class="down">￥6.0</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="good-image">第二个商品</div>
+                        <div class="good-txt">
+                            <p class="up">此处显示商品名称</p>
+                            <p class="down">￥6.0</p>
+                        </div>
+                    </li>
+                </ul>
+                {{/if}}
+            </div>			
+			<!-- <img src='${src}' /> -->
+		</li>
+	</script>
+	<!-- 手机验证 -->
+	<script type='text/html' id="msgVerify_tmpl">
+		<li>
+			<div class='msgVerify module' data-skin=${skin}>
+				<div class="row clearfix">
+					<div class="phone_number finput fl">请输入手机号</div>
+					<span class="get_code fbtn"> 获取验证码 </span>
+				</div>
+				<div class="blank"></div>
+				<div class="row">
+					<div class="input_code finput">请输入验证码</div>
+				</div>
+				<div class="blank"></div>
+				<div class="row text_center">
+					<span class="get_immediately fbtn">点击领取</span>
+				</div>
+			</div>
+		</li>
+	</script>			
+	<!-- 地址信息 -->
+	<script type='text/html' id="locationInfo_tmpl">
+		<li>
+			<div class="locationInfo module text_center">
+				<div class="row">
+					<div class="input_code finput">省</div>
+				</div>
+				<div class="blank"></div>
+				<div class="row">
+					<div class="input_code finput">市</div>
+				</div>		
+				<div class="blank"></div>		
+				<div class="row">
+					<div class="input_code finput">县</div>
+				</div>				
+			</div>
+		</li>
+	</script>
+	<!-- 文本导航 -->
+	<script type='text/html' id="textNav_tmpl">
+		<li>			
+			<div class="textNav module">
+				<ul class="navWrap">
+					{{each list}}
+					<li>{{= $value.content}}</li>
+					{{/each}}
+				</ul>
+			</div>
+		</li>    		
+	</script>		
+	<!-- 列表链接 -->
+	<script type='text/html' id="listLink_tmpl">
+		<li>			
+			<div class="listLink module">
+				<ul class="navWrap">
+					{{each list}}
+					<li>{{= $value.content}}<i class="arrow_icon"></i></li>
+					{{/each}}
+				</ul>
+			</div>
+		</li>    		
+	</script>		
+	<!-- 图片导航 -->
+	<script type='text/html' id='imgNav_tmpl'>
+		<li>			
+			<div class="imgNav module">
+				<ul class="navWrap">
+					{{each list}}
+					<li>
+						<img src="{{= $value.src}}" alt="" />
+						<p>{{= $value.text}}</p>
+					</li>
+					{{/each}}
+				</ul>
+			</div>
+		</li>  	
+	</script>	
+	<!-- 图片广告 -->
+	<script type='text/html' id="imgAd_tmpl">
+		<li>			
+			<div class="imgAd module">
+				<ul class="navWrap">
+					{{each list}}
+					<li>
+						<img src="{{= $value.src}}" alt="" />
+					<div class="custom-goods-info"><span class="custom-goods-title">{{= $value.text}}</span></div>
+					</li>
+					{{/each}}
+				</ul>
+			</div>
+		</li>    		
+	</script>		
+	<!-- 橱窗 -->
+	<script type='text/html' id="showcase_tmpl">
+		<li>			
+			<div class="showcase module">
+				<div class="showcaseTitle">${showcaseTitle}</div>
+				<ul class="navWrap">
+					{{each list}}
+					<li>
+						<img src="{{= $value.src}}" alt="" />
+					</li>
+					{{/each}}
+				</ul>
+				<div class="contentTitle">${contentTitle}</div>
+			</div>
+		</li>    		
+	</script>	
+	<!-- 店头 -->
+	<script type='text/html' id="storefront_tmpl">
+		<li>
+			<div class="storefront module">
+				<div class="bg" style="background-image:url('${bg}')">
+					<p class="shopname">Yeapoo</p>
+					<div class="logo" style="background-image:url('${logo}')"></div>
+				</div>
+				
+				<div class="tpl-shop-content">
+					<ul>
+						<li>我的订单</li>
+					</ul>
+				</div>
+			</div>
+		</li>
+	</script>		
+	<!-- btns模板 -->
+	<script type='text/html' id="btn_Tmpl">
+		<li data-form="{}"><a data-relateId="${id}" data-type="${type}" href="javascript:void(0);">${text}</a></li>
+	</script>
+
+</div>
+</div>
+<!-- tmpl begin -->
+<div id="popoverContent">
+	<!--魔方-->
+	<div class='magicBox'>
+		<div id='magicTable'>
+			
+		</div>
+		<div class='edit-magicBox'>
+			<table id='edit-tb'>
+				<tr>
+					<td>操作单元格：</td>
+					<td>
+						<a id='merge-btn' class='link' href='javascript:void(0)'>合并单元格</a> &nbsp;&nbsp; 
+						<a id='split-btn' class='link' href='javascript:void(0)'>拆分单元格</a> &nbsp;&nbsp; 
+						<a id='reset-btn' class='link' href='javascript:void(0)'>重置</a>
+					</td>
+				</tr>
+				<tr>
+					<td>选择图片:</td>
+					<td>
+						<img id='magicBox-img' href='javascript:void(0)' src='/images/imgError.jpg' />
+					</td>
+				</tr>
+				<tr>
+					<td>连接到:</td>
+					<td>
+						<select name='link'>
+							<option>页面1</option>
+							<option>页面2</option>
+							<option>页面3</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<!-- 店头 -->
+	<div class="storefront">
+		<form action="">						
+		    <div class="control-group replace">
+		    	<label class="control-label">背景图片:</label>
+				<div class="control bg change" data-appid="change">
+					<img src="${bg}" alt="" />
+					<p class="hint">点击替换图片(最佳尺寸：640 x 200 像素)</p>
+				</div>	
+			</div>
+			 <div class="control-group replace">			    	
+				<label for="" class="control-label">头像:</label>
+				<div class="control logo change" data-appid="change">
+					<img src="${logo}" alt="" />
+					<p class="hint">点击替换图片(最佳尺寸：80 x 80 像素)</p>
+				</div>
+		    </div> 				
+		</form>    		
+	</div>			
+	<!-- 橱窗 -->
+	<div class="showcase">
+		<form action="">						
+			
+		    <div class="control-group">
+				<label for="" class="control-label">橱窗标题名：</label>
+				<div class="control">
+					<input class="input" name="showcaseTitle" type="text" value="${showcaseTitle}" />
+				</div>	
+			</div>	
+			<div class="control-group">	
+				<label for="" class="control-label">内容区标题：</label>
+				<div class="control">
+					<input class="input" name="contentTitle" type="text" value="${contentTitle}" />
+				</div>						    	
+		    </div> 
+		    {{each list}}
+			    <div class="control-group options showcase replace">
+					<div class="control-choice addImg" data-appid="addImg"><img src="{{= $value.src}}" alt="" /><p class="hint">重新上传</p></div>		    	
+					<label for="" class="control-label">链接到：</label>
+					<div class="control">
+						<a class="dialog" href="javascript:void(0)" data-appid="goodsDialog">+从商品标签或微杂志中选择</a>
+					</div>
+			    </div> 		    
+		    {{/each}}   
+				
+		</form>    		
+	</div>		
+	<!-- 图片广告 -->
+	<div class="imgAd">
+		<form action="">						
+			{{each list}}
+		    <div class="control-group options replace">
+				<div class="control-choice addImg" data-appid="addImg"><img src="{{= $value.src}}" alt="" /><p class="hint">重新上传</p></div>
+				<label for="" class="control-label">标题：</label>
+				<div class="control">
+					<input class="input" name="imgAd" type="text" value="{{= $value.text}}" />
+				</div>			    	
+				<label for="" class="control-label">链接到：</label>
+				<div class="control">
+					<a class="dialog" href="javascript:void(0)" data-appid="goodsDialog">+从商品标签或微杂志中选择</a>
+				</div>
+				<div class="actions"><span class="delete delImgAd">×</span></div>			   
+		    </div> 
+		    {{/each}}   
+			<div class="control-group options add_imgAd addImg" data-appid="addImg">
+				<p class="description">
+					<i class="add_icon"></i>添加一个图片广告
+				</p>
+			</div>				
+		</form>    		
+	</div>			
+	<!-- 图片导航 -->
+	<div class="imgNav">
+		<form action="">						
+			{{each list}}
+		    <div class="control-group options replace">
+				<div class="control-choice addImg" data-appid="addImg"><img src="{{= $value.src}}" alt="" /><p class="hint">重新上传</p></div>
+				<label for="" class="control-label">文字：</label>
+				<div class="control">
+					<input class="input" name="imgNav" type="text" value="{{= $value.text}}" />
+				</div>			    	
+				<label for="" class="control-label">链接到：</label>
+				<div class="control">
+					<a class="dialog" href="javascript:void(0)" data-appid="goodsDialog">+从商品标签或微杂志中选择</a>
+				</div>
+		    </div> 
+		    {{/each}}   
+				
+		</form>    		
+	</div>		
+	<!-- 文本导航 -->
+	<div class="textNav">
+		<form action="">						
+			{{each list}}
+		    <div class="control-group options">
+				<label for="" class="control-label">导航名称：</label>
+				<div class="control">
+					<input class="input-l" name="textNav" maxlength="4" type="text" value="{{= $value.content}}" />
+				</div>			    	
+				<label for="" class="control-label">链接到：</label>
+				<div class="control">
+					<a class="dialog" href="javascript:void(0)" data-appid="goodsDialog">+从商品标签或微杂志中选择</a>
+				</div>
+		    </div> 
+		    {{/each}}   
+				
+		</form>    		
+	</div>		
+	<!-- 列表导航 -->
+	<div class="listLink">
+		<form action="">			
+			<div class="control-group options add_listLink">
+				<p class="description">
+					<i class="add_icon"></i>添加一个列表导航
+				</p>
+			</div>
+			
+			{{each list}}
+		    <div class="control-group options">
+				<label for="" class="control-label">导航名称：</label>
+				<div class="control">
+					<input class="input-l" name="listLink" type="text" value="{{= $value.content}}" />
+				</div>			    	
+				<label for="" class="control-label">链接到：</label>
+				<div class="control">
+					<a class="dialog" href="javascript:void(0)" data-appid="goodsDialog">+从商品标签或微杂志中选择</a>
+				</div>
+				<div class="actions"><span class="delete delListLink">×</span></div>			    	
+		    </div> 
+		    {{/each}}   
+				
+		</form>    		
+	</div>		
+	<!-- 商品搜索 -->
+	<div class="goodSearch">
+		<form action="">			
+			<div class="control-group">
+				<p class="description">
+					可随意插入任何页面和位置，方便粉丝快速搜索商品. <br />
+					注意：记得给商品添加合适的商品标签哦。
+				</p>
+			</div>
+		</form>    		
+	</div>	
+	<!-- 地址 -->
+	<div class="locationInfo">
+		<form action="">			
+			<div class="control-group">
+				<p class="description">
+					地址下拉选框 
+				</p>
+			</div>
+		</form>    		
+	</div>			
+	<!-- 标题 -->
+	<div class="title">
+		<form action="">			
+			<div class="control-group">
+				<label for="" class="control-label">标题：</label>
+				<div class="control">
+					<input class="input-l" name="maxTitle" type="text" value="" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label for="" class="control-label">副标题：</label>
+				<div class="control">
+					<input class="input-l" name="minTitle" type="text" value="" />
+				</div>
+			</div>
+		</form>    		
+	</div>	
+	<!-- 活动图片 -->
+	<div class="img">
+		<form action="">
+			<div class="control-group">
+				<label for="" class="control-label">商品库：</label>
+				<div class="control">
+					<div id="filelist">Your browser doesn't have Flash, Silverlight or HTML5 support.</div>
+					<div id="container">
+					    <a id="pickfiles" href="javascript:;"><i class="add_icon"></i>添加商品</a> 
+					    <a id="uploadfiles" href="javascript:;">上传</a>
+					</div>					
+				</div>
+			</div>
+			<div class="control-group">
+				<label for="" class="control-label">显示方式：</label>
+				<div class="control">
+					<label for="" class="radio inline"><input type="radio" name="size" value="0" checked=""/>大图</label>
+					<label for="" class="radio inline"><input type="radio" name="size" value="1" />小图</label>
+					<label for="" class="radio inline"><input type="radio" name="size" value="2" />一大两小</label>
+					<label for="" class="radio inline"><input type="radio" name="size" value="3" />列表</label>
+				</div>
+			</div>
+			<div class="control-group">
+				<label for="" class="control-label">商品名：</label>
+				<div class="control">
+					<label for="" class="radio inline"><input type="checkbox" name="title" value="0" />显示商品名（小图的时候不会显示商品名）</label>
+				</div>
+			</div>    			
+			<div class="control-group">
+				<label for="" class="control-label">价格：</label>
+				<div class="control">
+					<label for="" class="radio inline"><input type="checkbox" name="price" value="0" />显示价格</label>
+					<label for="" class="radio inline"><input type="checkbox" name="cart" value="1" />显示购物车图标</label>
+				</div>
+			</div>    			
+			<div class="control-group">
+				<label for="" class="control-label">选择来源：</label>
+				<div class="control">
+					<a class="dialog" href="javascript:void(0)" data-appid="goodsDialog">+从商品标签或微杂志中选择</a>
+					<p class="hint">选择商品来源后，左侧实时预览暂不支持显示其包含的商品数据</p>
+				</div>
+			</div>  
+			<div class="control-group">
+				<label for="" class="control-label">显示数量：</label>
+				<div class="control">
+					<label for="" class="radio inline"><input type="radio" name="goods_number_type" value="0" checked="" />6</label>
+					<label for="" class="radio inline"><input type="radio" name="goods_number_type" value="1" />12</label>
+					<label for="" class="radio inline"><input type="radio" name="goods_number_type" value="2" />18</label>
+				</div>
+			</div>    			  			
+		</form>  		    		
+	</div>
+	<!-- 活动文字 -->
+	<div class="fullText">
+		<form action="">
+			<div class="control-group">
+				<label for="" class="control-label">活动描述：</label>
+				<div class="control">
+					<textarea name="details" cols="30" rows="10"></textarea>
+				</div>
+			</div>
+		</form>    		
+	</div>    	
+	<!-- 验证码-->
+	<div class="msgVerify">
+		<form action="">
+			<div class="control-group">
+				<label for="" class="control-label">皮肤：</label>
+				<div class="control">
+					<label for="" class="radio inline"><input type="radio" name="skin" value="default" checked="" />默认</label>
+					<label for="" class="radio inline"><input type="radio" name="skin" value="yellow" />黄</label>
+					<label for="" class="radio inline"><input type="radio" name="skin" value="blue" />蓝</label>
+				</div>
+			</div>
+		</form>    		
+	</div>
+	<!-- 辅助线-->
+	<div class="subline">
+		<form action="">
+			<div class="control-group">
+				<p class="description">辅助线</p>
+			</div>
+		</form>    		
+	</div>
+	<!-- 辅助空白-->
+	<div class="blankSpace">
+		<form action="">
+			<div class="control-group">
+				<label class="control-label">空白高度: </label><input type="text" value="3" class="slideControl" maxlength="3" />
+			</div>
+		</form>    		
+	</div> 
+ 	  	  	    				    	  	
+</div>    	              
+<!-- tmpl end -->
+<!-- tmpl start-->
+<script id='selectImg' type="text/html">
+		<ul class="piclist clearfix">
+			{{each list}}
+		  	<li><img src="{{= $value.src}}" alt="" /></li>
+	  	{{/each}}
+	  </ul>
+</script>
+<!-- 弹窗内容 -->
+<div id="dialogContent">
+	<!-- 商品列表 -->
+	<div id="goodsDialog" title="test">
+	  <p>此功能尚未开放，敬请期待！</p>
+	</div>   
+	<!-- 添加图片 -->
+	<div id="addImg" title="test">
+	  <ul class="piclist clearfix">
+	  	<li><img src="/images/xxximg.jpg" alt="" /></li>
+	  	<li><img src="/images/xxximg01.jpg" alt="" /></li>
+	  	<li><img src="/images/xxximg02.jpg" alt="" /></li>
+	  	<li><img src="/images/xxximg03.jpg" alt="" /></li>
+	  </ul>
+	</div>   
+	<!-- 改变图片 -->
+	<div id="change" title="test">
+	  <ul class="piclist clearfix">
+	  	<li><img src="/images/xxximg.jpg" alt="" /></li>
+	  	<li><img src="/images/xxximg01.jpg" alt="" /></li>
+	  	<li><img src="/images/xxximg02.jpg" alt="" /></li>
+	  	<li><img src="/images/xxximg03.jpg" alt="" /></li>
+	  	<li><img src="/images/bg.jpg" alt="" /></li>
+	  	<li><img src="/images/logo.jpg" alt="" /></li>
+	  	<li><img src="/images/xxximg02.jpg" alt="" /></li>
+	  	<li><img src="/images/xxximg03.jpg" alt="" /></li>	  	
+	  </ul>
+	</div> 	
+</div>
+<script type="text/javascript" src="/js/jquery-1-8-3.js"></script>
+<script type="text/javascript" src='/js/JQueryUI/jquery-ui.min.js'></script>
+<script type="text/javascript" src="/js/jquery.tmpl.js"></script>
+<script src="/js/kindeditor-all.js"></script>
+<script type="text/javascript" src="/js/plupload.full.min.js"></script>
+<script type="text/javascript" src='/js/module.js'></script>
+<script type="text/javascript" src='/js/popover.js'></script>
+<script type="text/javascript" src='/js/main.js?page=1'></script>
+<script src="/js/dialog-min.js"></script>
+<script src="/js/jquery.ui.touch-punch.min.js"></script>
+</body>
+</html>

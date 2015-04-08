@@ -1,0 +1,10 @@
+<div  class='imgAd'>
+	<ul id='imgList'>
+	{% for item in list%}
+		<li>
+			<img src='{{item.src}}' />
+			<div class='product_title'>{{item.text}}</div>
+		</li>
+	{% endfor%}
+	</ul>
+</div>

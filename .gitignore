@@ -1,0 +1,8 @@
+.DS_Store
+assert/.DS_Store
+component/.DS_Store
+lib/.DS_Store
+node_modules/.DS_Store
+views/.DS_Store
+
+node_modules

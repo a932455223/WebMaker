@@ -1,0 +1,36 @@
+{
+  "name": "webMaker",
+  "description": "html page generate",
+  "version": "0.0.1",
+  "dependencies": {
+    "assert": "^1.3.0",
+    "co": "^4.1.0",
+    "co-body": "^1.0.0",
+    "co-monk": "^1.0.0",
+    "co-views": "^0.2.0",
+    "koa": "^0.14.0",
+    "koa-compose": "^2.3.0",
+    "koa-csrf": "^2.1.1",
+    "koa-logger": "^1.2.1",
+    "koa-route": "^1.1.4",
+    "koa-send": "^1.3.1",
+    "koa-static": "^1.4.5",
+    "monk": "^1.0.1",
+    "raw-body": "^1.2.1",
+    "save-to": "^1.0.3",
+    "streaming-json-stringify": "^1.0.0",
+    "swig": "^1.4.2"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "^3.3.2",
+    "supertest": "*"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "engines": {
+    "node": ">= 0.11.13"
+  },
+  "license": "MIT"
+}
