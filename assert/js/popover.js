@@ -136,9 +136,7 @@ popover.magicBox = function(){
 	}else{
 		var firstR = parseInt(data[0].pos[0]);
 		var lastR = parseInt(data[data.length -1].pos[0]);
-		console.log('not empty');
 		if(firstR > 1){
-		console.log('firstR>1');
 			for(h=1;h<firstR;h++){
 				for(var z=1;z<5;z++){
 					var td = createTd(h,z);
@@ -151,13 +149,12 @@ popover.magicBox = function(){
 		for(var index in data){
 			var item = data[index];
 			if(item.isDelete){
-				// console.log('isDelete:'+item.pos);
+				_rTemp = parseInt(item.pos[0]);
 				continue;
 			}else{
-				console.log('pos:'+item.pos);
 				var r = parseInt(item.pos[0]);
 				var r_diff =  r - _rTemp;
-				if(r_diff > 1){
+				if(r_diff > 1 && (!data[index-1].rowspan || data[index-1].rowspan <=1)){
 					for(var f=_rTemp+1;f<_rTemp+r_diff;f++){
 						for(var g=1;g<5;g++){
 							var td = createTd(f,g);
@@ -165,7 +162,7 @@ popover.magicBox = function(){
 						}
 					}
 				}
-				// console.log('r:'+r+',r_diff:'+r_diff);
+
 				_rTemp = r;
 				var td = $('<div>');
 				td.attr({'data-pos':item.pos});
@@ -175,11 +172,11 @@ popover.magicBox = function(){
 				td.css({top:top,left:left});
 				if(item.rowspan > 1){
 					td.attr('rowspan',item.rowspan);
-					td.width(item.rowspan*51-1);
+					td.height(item.rowspan*51-1);
 				}
 				if(item.colspan > 1){
 					td.attr('colspan',item.colspan);
-					td.height(item.colspan*51-1);
+					td.width(item.colspan*51-1);
 				}
 				if(item.img){
 					td.attr('data-img',item.img);
@@ -390,6 +387,139 @@ popover.fullText = function(){
 	// K.sync("title")	
 	return true;	
 };
+
+//customerBtn
+popover.customerBtn = function(){
+	var _this = this;
+	//图片上传插件
+	var uploader = new plupload.Uploader({
+		runtimes : 'html5,flash,silverlight,html4',
+		browse_button : 'pick_files', // you can pass in id...
+		container: document.getElementById('container'), // ... or DOM Element itself
+		url : '/upload',
+		flash_swf_url : '../js/Moxie.swf',
+		silverlight_xap_url : '../js/Moxie.xap',
+		
+		filters : {
+			max_file_size : '10mb',
+			mime_types: [
+				{title : "Image files", extensions : "jpg,gif,png"},
+				{title : "Zip files", extensions : "zip"}
+			]
+		},
+	
+		init: {
+			PostInit: function() {
+				document.getElementById('filelist').innerHTML = '';
+				$('#container').on("click","#upload_files",function() {
+					uploader.start();
+					return false;
+				});
+			},
+	
+			FilesAdded: function(up, files) {
+				plupload.each(files, function(file) {
+					document.getElementById('filelist').innerHTML += '<div id="' + file.id + '">' + file.name + ' (' + plupload.formatSize(file.size) + ') <b></b></div>';
+				});
+			},
+			FileUploaded:function(up,file,res){
+				console.log(res);
+			},
+			UploadProgress: function(up, file) {
+				document.getElementById(file.id).getElementsByTagName('b')[0].innerHTML = '<span>' + file.percent + "%</span>";
+			},
+	
+			Error: function(up, err) {
+				document.getElementById('console').innerHTML += "\nError #" + err.code + ": " + err.message;
+			}
+		}
+	});
+	uploader.init();
+	var initData = JSON.parse(_this.wrap.dataset.form);
+	// console.log(JSON.stringify(content.color));
+
+	var backgroundImage = initData.content['background-image'];
+	console.log(backgroundImage);
+	if(backgroundImage){
+		$('.img_list').find('img').each(function(index){
+			var src = this.src;
+			if(src.indexOf(backgroundImage) > 0){
+				$(this).addClass('active');
+			}
+		});
+	}
+
+	//spectrum 颜色选择组件
+	var $btn = $(_this.target).find('button');
+	$('#text_color').spectrum({
+		// color:'#fff',
+		clickoutFiresChange:true,
+		move:function(color){
+			$btn.css('color',color.toHexString());
+		},
+		change:function(color){
+			var wrap = $(_this.wrap)[0];
+			var formData = JSON.parse(wrap.dataset.form);
+			formData.content.color = color.toHexString();
+			wrap.dataset.form = JSON.stringify(formData);
+		}
+	});
+
+	$('#bg_color').spectrum({
+		// color:'#ffa200',
+		clickoutFiresChange:true,
+		move:function(color){
+			$btn.css('background-color',color.toHexString());
+		},
+		change:function(color){
+			var wrap = $(_this.wrap)[0];
+			var formData = JSON.parse(wrap.dataset.form);
+			formData.content['background-color'] = color.toHexString();
+			wrap.dataset.form = JSON.stringify(formData);
+		}
+	});
+
+	//btnText的change事件
+	var timeid;
+	$('#edit_btnText').on('focus',function(){
+		var $this = $(this);
+		$this.select();
+		timeid = setInterval(function(){
+			var wrap = $(_this.wrap)[0];
+			var formData = JSON.parse(wrap.dataset.form);
+			formData.content.btnText = $this.val();
+			$btn.html($this.val());	
+			wrap.dataset.form = JSON.stringify(formData);		
+		},400);
+	});
+
+	$('#edit_btnText').on('blur',function(){
+		if (timeid) clearInterval(timeid);
+		if($(this).val().trim() === ''){
+			$(this).val('这是一个按钮');
+			$btn.html('这是一个按钮');
+		}
+	});
+
+	$('.img_list').find('li').on('click',function(){
+		var wrap = $(_this.wrap)[0];
+		var formData = JSON.parse(wrap.dataset.form);
+		var $this = $(this);
+		if($this.find('img').is('.active')){
+			$this.find('img').removeClass('active');
+			$btn[0].style.removeProperty('background-image');
+			formData.content['background-image'];
+		}
+		else{
+			var imgSrc = $this.find('img').addClass('active').attr('src');
+			$(this).siblings().find('img').removeClass('active')
+			formData.content['background-image'] = imgSrc;
+			wrap.dataset.form = JSON.stringify(formData);
+			$btn.css({'background-image':'url('+imgSrc+')','background-repeat':'repeat-x'});
+		}
+		
+	});
+}
 //图片上传
 popover.img = function(){	
 	var _this = this;
@@ -399,7 +529,7 @@ popover.img = function(){
 		runtimes : 'html5,flash,silverlight,html4',
 		browse_button : 'pickfiles', // you can pass in id...
 		container: document.getElementById('container'), // ... or DOM Element itself
-		url : 'upload.php',
+		url : '/upload',
 		flash_swf_url : '../js/Moxie.swf',
 		silverlight_xap_url : '../js/Moxie.xap',
 		
@@ -415,7 +545,7 @@ popover.img = function(){
 			PostInit: function() {
 				document.getElementById('filelist').innerHTML = '';
 	
-				$(document).on("click","#uploadfiles",function() {
+				$('#container').on("click","#uploadfiles",function() {
 					uploader.start();
 					return false;
 				});

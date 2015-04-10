@@ -174,3 +174,14 @@ li {
   text-align: center;
 }
 /**魔方的css结束**/
+.customerBtn_container{
+  padding:5px;
+  text-align: center;
+}
+.customerBtn_container button{
+  height:35px;
+  padding:0 5px;
+  text-align: center;
+  border:none;
+  min-width: 60px;
+}

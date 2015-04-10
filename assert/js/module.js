@@ -17,6 +17,9 @@ function addComponentToView(component,container){
 	var $com = $('#'+components[component.id]+'_tmpl').tmpl(component).appendTo(container)
 	.attr({"data-identity":components[component.id],"data-index":component.id,"data-form":JSON.stringify(component)});
 	// addContorlBtn($('#'+components[component.id]+'_tmpl').find(".moduleWrap"));
+	if(component.id === 16){
+		$com.find('button').css(component.content);
+	}
 	addContorlBtn($com);
 
 }

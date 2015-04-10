@@ -11,6 +11,7 @@
 <link rel="stylesheet"  href="/css/popover.css" />
 <link rel="stylesheet"  href="/css/phone-editor.css">
 <link href="/css/ui-dialog.css" media="screen" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="/css/spectrum.css">
 </head>
 <body>
 <header class="header">
@@ -197,6 +198,16 @@
 	<script type="text/html" id='magicBox_tmpl'>
 		<li magicform='{}' data-form='{}'>
 							<div class='current module' style='height:45px;'></div>
+		</li>
+	</script>
+	<!-- customerBtn-->
+	<script type="text/html" id='customerBtn_tmpl'>
+		<li  data-form='{}'>
+			<div class='current module'>
+				<div class='customerBtn_container'>
+					<button>${btnText}</button>
+				</div>
+			</div>
 		</li>
 	</script>
 	<!-- 图片区域 -->
@@ -436,6 +447,54 @@
 					</td>
 				</tr>
 			</table>
+		</div>
+	</div>
+
+	<!-- customerBtn -->
+	<div class="customerBtn">
+		<form action="/" enctype='multipart/form-data'>
+			<div style="display:none;" class="control-group">
+				<label for="" class="control-label">上传图片：</label>
+				<div class="control">
+					<div id="filelist">Your browser doesn't have Flash, Silverlight or HTML5 support.</div>
+					<div id="container">
+					    <a id="pick_files" href="javascript:;"><i class="add_icon"></i>添加图片</a> 
+					    <a id="upload_files" href="javascript:;">上传</a>
+					</div>					
+				</div>
+			</div>
+			<div style='padding-left:15px;'>
+				<p>已有底纹：</p>
+				<ul class='img_list clearfix'>
+					<li>
+						<img src='/upload/bg01.jpg' />
+					</li>
+					<li>
+						<img src='/upload/bg02.jpg' />
+					</li>
+					<li>
+						<img src='/upload/bg03.jpg' />
+					</li>
+					<li>
+						<img src='/upload/bg04.jpg' />
+					</li>
+					<li>
+						<img src='/upload/bg05.jpg' />
+					</li>
+					<li>
+						<img src='/upload/bg06.jpg' />
+					</li>
+				</ul>
+			</div>
+		</form>
+		<div style='padding-left:15px;'>
+				<p>字体颜色：<input value='${content.color}' id='text_color' /></p>
+		</div>
+		<div style='padding:20px 15px 0;'>
+				<p>背景颜色：<input value='${getBackgroundColor(content)}' id='bg_color' /></p>
+		</div>
+		<div style='padding:20px 15px 0;'>
+				<p>按钮文字：<input id='edit_btnText' value='这是一个按钮' name='btnText'  /></p>
 		</div>
 	</div>
 	<!-- 店头 -->
@@ -748,8 +807,19 @@
 		<td>${dateFormate(created_at)}</td>
 	</tr>
 </script>
+<script type="text/javascript">
+	function getBackgroundColor(content){
+		return content['background-color'];
+	}
+	function checkBackgroundImage(content,url){
+		if(content['background-image'] === url){
+			return 'active'
+		}
+	}
+</script>
 <script type="text/javascript" src="/js/jquery-1-8-3.js"></script>
 <script type="text/javascript" src='/js/JQueryUI/jquery-ui.min.js'></script>
+<script type="text/javascript" src='/js/spectrum.js'></script>
 <script type="text/javascript" src="/js/jquery.tmpl.js"></script>
 <script src="/js/kindeditor-all.js"></script>
 <script type="text/javascript" src="/js/plupload.full.min.js"></script>
@@ -759,5 +829,6 @@
 <script src="/js/dialog-min.js"></script>
 <script src="/js/jquery.ui.touch-punch.min.js"></script>
 <script type="text/javascript" src='/js/index.js'></script>
+<div id='console'></div>
 </body>
 </html>

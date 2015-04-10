@@ -41,7 +41,7 @@ var pagelist = [{
             // id:14,bg:"images/bg.jpg",logo:"images/logo.jpg"
             // }
         ],
-        editBtns: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+        editBtns: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,16]
     },
 
     {
@@ -151,16 +151,28 @@ var default_config = ['', {
 }, {
     id: 15,
     content:{}
+},{
+    id:16,
+    content:{
+        'border-radius':'5px',
+        'background-color':'#ffa200',
+        'color':'#fff'
+    },
+    btnText:'这是一个按钮'
 }];
 //组件列表
-var components = ['', 'fullText', 'img', 'msgVerify', 'locationInfo', 'imgAd', 'title', 'textNav', 'imgNav', 'listLink', 'goodSearch', 'showcase', 'subline', 'blankSpace', 'storefront', 'magicBox'];
+var components = ['', 'fullText', 'img', 'msgVerify', 'locationInfo', 'imgAd', 'title', 'textNav', 'imgNav', 'listLink', 'goodSearch', 'showcase', 'subline', 'blankSpace', 'storefront', 'magicBox','customerBtn'];
 //按钮列表
-var btnText = ['', '富文本', '商品列表', '短信验证', '地址信息', '图片广告', '标题', '文本导航', '图片导航', '列表链接', '商品搜索', '橱窗', '辅助线', '辅助空白', '店头', '魔方'];
+var btnText = ['', '富文本', '商品列表', '短信验证', '地址信息', '图片广告', '标题', '文本导航', '图片导航', '列表链接', '商品搜索', '橱窗', '辅助线', '辅助空白', '店头', '魔方','按钮'];
 //全部视图模块信息
 function getAllData($nodelist) {
     var arr = [];
     $nodelist.each(function(i) {
-        arr[i] = JSON.parse(this.dataset.form);
+        var _t = JSON.parse(this.dataset.form);
+        if($(this).attr('magicform')){
+            _t.content = JSON.parse($(this).attr('magicform'));
+        }
+        arr[i] = _t;
     })
     return arr;
 }
@@ -271,6 +283,7 @@ $(document).ready(function() {
     $('#btn_complete').click(function(){
         var $list = $('#editor_body').children('li');
         var data = getAllData($list);
+        console.log(JSON.stringify(data));
         $.post('/page',{pages:data,title:$('#editor_title').html().trim()}).done(function(rp){
             var url = window.location.host+'/page/'+rp.pageId;
             // var url = 'http://www.baidu.com';
@@ -287,6 +300,7 @@ $(document).ready(function() {
                 });
             }
         });
+
     });
 
 });

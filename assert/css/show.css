@@ -286,13 +286,13 @@ article{
 	margin: 0;
 }
 .goods_bigSmall li{
-	width:48%;
+	width:49%;
 	float: left;
 	box-sizing:border-box;
 	position: relative;
 }
 .goods_bigSmall li:nth-child(2){
-	margin-right: 4%;
+	margin-right: 2%;
 }
 .goods_bigSmall li img{
 	width:100%;
@@ -521,4 +521,24 @@ article{
 	background: #fff;
 	box-sizing:border-box;
 	text-align: center;
+}
+
+/*magicBox*/
+.magicBox{
+	position: relative;
+}
+.magicBox div{
+	position: absolute;
+}
+
+/*customerBtn*/
+.customerBtn{
+	padding:10px 0;
+	text-align: center;
+}
+.customerBtn button{
+	min-width: 60px;
+	height:35px;
+	padding:0 5px;
+	border:none;
 }

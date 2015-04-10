@@ -6,6 +6,8 @@ var render = require('./lib/render');
 var logger = require('koa-logger');
 var route = require('koa-route');
 var parse = require('co-body');
+var parseFile = require('co-busboy')
+var fs = require('fs');
 var koa = require('koa');
 var swig = require('swig');
 var send = require('koa-send');
@@ -13,6 +15,8 @@ var url = 'mongodb://localhost:27017/webMaker';
 var monk = require('monk');
 var wrap = require('co-monk');
 var app = koa();
+var os = require('os');
+var path =require('path');
 var assert = require('assert');
 
 var db = monk(url);
@@ -22,6 +26,10 @@ swig.setDefaults({
 app.use(logger());
 // route middleware
 app.use(function*(next) {
+    console.log(this.path);
+    if(this.path.indexOf('upload/')>0){
+        yield send(this,__dirname +this.path);
+    }
     if (this.accepts('text/css', 'text/javascript')) {
         yield send(this, __dirname + '/assert' + this.path);
     }
@@ -34,6 +42,7 @@ app.use(route.get('/page/:id', show));
 app.use(route.post('/page', create));
 app.use(route.get('/page/:id/edit', edit));
 app.use(route.post('/page/delete/:id', deletePage))
+app.use(route.post('/upload',upload));
     // app.use(route.get('/getPage/:id', getPage));
     /** deletePage 根据id删除对应的页面 **/
 function* deletePage(id) {
@@ -46,6 +55,22 @@ function* deletePage(id) {
             msg: '数据成功删除'
         };
     }
+
+/*上传文件的接口*/
+function* upload(next){
+    // if('POST' !== this.method){ return yield next;}
+    var parts = parseFile(this);
+    var part;
+    while(part = yield parts){
+        if(!part.length){
+            var d = new Date();
+            var _p = './upload/'+d.getFullYear()+(d.getMonth()+1)+d.getDate()+d.getHours()+d.getMinutes()+d.getSeconds()+part.filename;
+            var stream = fs.createWriteStream(_p);
+            part.pipe(stream);
+        }
+    }
+    this.body = 'ok';
+}
     /**pages list页面**/
 function* list(next) {
         var pages = wrap(db.get('pages'));
@@ -85,6 +110,7 @@ function* show(id) {
         var com = yield comTmpl.findOne({
             component_id: component_id
         });
+        console.log(JSON.stringify(item));
         var tmplPath = com.path;
         if(component_id === 2){
             tmplPath = com.path[page[i].config.size].url;

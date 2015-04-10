@@ -66,4 +66,43 @@ $(document).ready(function(){
 		});
 	}
 
+	try{
+		if(magicData.length > 0){
+		var prelen = $('.main').width()/4;
+		var $box = $('<div>',{'class':'magicBox'}).appendTo('.main');
+		var tds = $();
+		for(var i=0;i<magicData.length;i++){
+			var item = magicData[i];
+			if(item.isDelete === 'true'){
+				continue;
+			}else{
+				var pos = item.pos;
+				var td = $('<div>',{'class':item.classList,'data-pos':pos});
+				var r = parseInt(pos[0]);
+				var c = parseInt(pos[1]);
+				var colspan = parseInt(item.colspan||1);
+				var rowspan = parseInt(item.rowspan||1);
+				td.css({
+					top:(r-1)*prelen,
+					left:(c-1)*prelen,
+					width:colspan*prelen,
+					height:rowspan*prelen,
+				});
+				if(item.img){
+					td.css({
+						'background-image':'url(/'+item.img+')',
+						'background-size':'100% 100%'
+					});
+				}
+				tds.add(td);
+				tds = tds.add(td);
+			}
+		}
+
+		$box.append(tds);
+	}
+	}
+	catch(e){
+		console.log(e.message);
+	}
 });
