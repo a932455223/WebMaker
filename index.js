@@ -26,7 +26,6 @@ swig.setDefaults({
 app.use(logger());
 // route middleware
 app.use(function*(next) {
-    console.log(this.path);
     if(this.path.indexOf('upload/')>0){
         yield send(this,__dirname +this.path);
     }
@@ -43,8 +42,12 @@ app.use(route.post('/page', create));
 app.use(route.get('/page/:id/edit', edit));
 app.use(route.post('/page/delete/:id', deletePage))
 app.use(route.post('/upload',upload));
+app.use(route.get('/test',test));
     // app.use(route.get('/getPage/:id', getPage));
     /** deletePage 根据id删除对应的页面 **/
+function* test(){
+    yield send(this,__dirname+'/views/test.html');
+}
 function* deletePage(id) {
         var pages = wrap(db.get('pages'));
         var msg = yield pages.remove({
@@ -64,12 +67,15 @@ function* upload(next){
     while(part = yield parts){
         if(!part.length){
             var d = new Date();
-            var _p = './upload/'+d.getFullYear()+(d.getMonth()+1)+d.getDate()+d.getHours()+d.getMinutes()+d.getSeconds()+part.filename;
-            var stream = fs.createWriteStream(_p);
+            var _p = './upload/'+ d.getFullYear()+(d.getMonth()+1)+d.getDate()+d.getHours()+d.getMinutes()+d.getSeconds();
+            fs.mkdirSync(_p);
+            var filePath =  _p + '/'+part.filename;
+            var stream = fs.createWriteStream(filePath);
             part.pipe(stream);
         }
     }
-    this.body = 'ok';
+    this.type = 'text/json';
+    this.body = {code:200,path:filePath.substr(1)};
 }
     /**pages list页面**/
 function* list(next) {
@@ -85,7 +91,6 @@ function* edit(id) {
     var page = yield pages.findOne({
         _id: id
     });
-    console.log(page);
     yield send(this, __dirname + '/views/edit.html');
 }
 
@@ -110,7 +115,6 @@ function* show(id) {
         var com = yield comTmpl.findOne({
             component_id: component_id
         });
-        console.log(JSON.stringify(item));
         var tmplPath = com.path;
         if(component_id === 2){
             tmplPath = com.path[page[i].config.size].url;
@@ -130,8 +134,6 @@ function* create() {
     var data = yield parse(this);
     data.created_at = new Date();
     var msg = yield pages.insert(data);
-    console.log(msg);
-    console.log(data);
     this.body = {
         status: 200,
         msg: 'ok',

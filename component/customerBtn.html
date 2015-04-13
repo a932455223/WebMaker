@@ -3,5 +3,9 @@
 </div>
 <script type="text/javascript">
 	var btnStyle = {{JSON.stringify(content)}};
-	$('.customerBtn').find('button').css(btnStyle);
+	var $btn = $('.customerBtn').find('button');
+	$btn.css(btnStyle);
+	if(btnStyle['background-image']){
+		$btn.css('background-image','url('+btnStyle['background-image']+')');
+	}
 </script>

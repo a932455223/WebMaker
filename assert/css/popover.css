@@ -836,3 +836,12 @@ i {
   border:1px solid rgba(244, 9,9,0.6);
   box-shadow:0 0 2px rgba(244,9,9,0.6);
 }
+#popover .popover-inner textarea.edit_btnStyle{
+  width:92%;
+}
+.edit_btnStyle{
+  margin-top:10px;
+  border-radius:5px;
+  border:1px solid #ccc;
+  resize:vertical;
+}

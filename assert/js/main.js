@@ -41,7 +41,7 @@ var pagelist = [{
             // id:14,bg:"images/bg.jpg",logo:"images/logo.jpg"
             // }
         ],
-        editBtns: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,16]
+        editBtns: [14,10,8, 2,16, 3, 4, 5, 6, 7, 9, 11, 12, 13, 1, 15]
     },
 
     {
@@ -272,27 +272,27 @@ $(document).ready(function() {
         }
         //移除要删除的模块
         $module.remove();
-        //模拟触发被删除模块的上一个模块
-        // $module.prev().find(".module").trigger("click");
-        // $editor.find(".current").trigger("click");
-        //重新定位编辑框
-        // popover.pos();
         return false;
     });
 
     $('#btn_complete').click(function(){
         var $list = $('#editor_body').children('li');
         var data = getAllData($list);
-        console.log(JSON.stringify(data));
         $.post('/page',{pages:data,title:$('#editor_title').html().trim()}).done(function(rp){
-            var url = window.location.host+'/page/'+rp.pageId;
-            // var url = 'http://www.baidu.com';
+            var url = 'http://'+window.location.host+'/page/'+rp.pageId;
+            // var url_param = encodeURIComponent(url);
             if(rp.status === 200){
                 var d = dialog({
                     title:'提示信息',
-                    content:'保存成功，访问网址:<br/>'+'<a id="pageLinks" target="_blank" href="http://'+url+'" >'+url+'</a>'
+                    content:'保存成功!:<br/>'+'访问<a id="pageLinks" style="color:#29B4F0" target="_blank" href="'+url+'" >点击这里</a><p id="QRcode" style="text-align:center;"></p>'
                 });
+              
                 d.showModal();
+                QRCanvas({
+                    data:url,
+                    size:230
+               }).appendTo($('#QRcode')[0]);
+
                 $('#pageLinks').off('click').on('click',function(){
                     setTimeout(function(){
                         window.location.reload();

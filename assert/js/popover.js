@@ -423,7 +423,16 @@ popover.customerBtn = function(){
 				});
 			},
 			FileUploaded:function(up,file,res){
-				console.log(res);
+
+				var rs = JSON.parse(res.response);
+				for(var i in rs){
+					console.log(i);
+				}
+				if(rs.code === 200){
+					var img = new Image();
+					img.src = rs.path;
+					$('#popover').find('.img_list').append($('<li>').append(img))
+				}
 			},
 			UploadProgress: function(up, file) {
 				document.getElementById(file.id).getElementsByTagName('b')[0].innerHTML = '<span>' + file.percent + "%</span>";
@@ -439,7 +448,6 @@ popover.customerBtn = function(){
 	// console.log(JSON.stringify(content.color));
 
 	var backgroundImage = initData.content['background-image'];
-	console.log(backgroundImage);
 	if(backgroundImage){
 		$('.img_list').find('img').each(function(index){
 			var src = this.src;
@@ -501,22 +509,22 @@ popover.customerBtn = function(){
 		}
 	});
 
-	$('.img_list').find('li').on('click',function(){
+	$('.img_list').on('click','li',function(){
 		var wrap = $(_this.wrap)[0];
 		var formData = JSON.parse(wrap.dataset.form);
 		var $this = $(this);
 		if($this.find('img').is('.active')){
 			$this.find('img').removeClass('active');
 			$btn[0].style.removeProperty('background-image');
-			formData.content['background-image'];
+			delete formData.content['background-image'];
 		}
 		else{
 			var imgSrc = $this.find('img').addClass('active').attr('src');
 			$(this).siblings().find('img').removeClass('active')
 			formData.content['background-image'] = imgSrc;
-			wrap.dataset.form = JSON.stringify(formData);
-			$btn.css({'background-image':'url('+imgSrc+')','background-repeat':'repeat-x'});
 		}
+		wrap.dataset.form = JSON.stringify(formData);
+		$btn.css({'background-image':'url('+imgSrc+')','background-repeat':'repeat-x'});
 		
 	});
 }
