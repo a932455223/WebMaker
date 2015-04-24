@@ -41,7 +41,7 @@ var pagelist = [{
             // id:14,bg:"images/bg.jpg",logo:"images/logo.jpg"
             // }
         ],
-        editBtns: [14,10,8, 2,16, 3, 4, 5, 6, 7, 9, 11, 12, 13, 1, 15]
+        editBtns: [14,10,5, 2,16, 3, 4, 8, 6, 7, 9, 11, 12, 13, 1, 15]
     },
 
     {
