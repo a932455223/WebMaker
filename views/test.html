@@ -1,14 +1,19 @@
 <!doctype html>
 <html>
 	<head>
-		<script type="text/javascript" src='/js/QRcode/qrcode-light.js'></script>
-		<script type="text/javascript" src='/js/QRcode/qrgen-canvas.js'></script>
+	<meta name="viewport" content='width=device-width,initial-scale=1.0'>
+	<script type="text/javascript" src='js/jquery-1-8-3.js'></script>
+		<!-- // <script type="text/javascript" src='/js/QRcode/qrcode-light.js'></script> -->
+		<!-- // <script type="text/javascript" src='/js/QRcode/qrgen-canvas.js'></script> -->
 	</head>
 	<body>
+		<p>
+			<a target='_blank' href="https://itunes.apple.com/cn/app/xie-cheng-zhou-mo-cheng-shi/id986276381?mt=8">下载app</a>
+		</p>
+		<p id='os'></p>
 		<script type="text/javascript">
-		QRCanvas({
-			data:'http://baidu.com'
-		}).appendTo(document.body);
+		var os = navigator.userAgent;
+		$('#os').html(os);
 		</script>
 	</body>
 </html>
