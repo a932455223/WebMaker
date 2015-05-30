@@ -451,12 +451,12 @@
 	</div>
 
 	<!-- customerBtn -->
-	<div class="customerBtn">
+	<script type='text/html' class="customerBtn">
 		<form action="/" enctype='multipart/form-data'>
 			<div  class="control-group">
 				<label for="" class="control-label">上传图片：</label>
 				<div class="control">
-					<div id="filelist">Your browser doesn't have Flash, Silverlight or HTML5 support.</div>
+					<div id="filelist">Your browser doesnt have Flash, Silverlight or HTML5 support.</div>
 					<div id="container">
 					    <a id="pick_files" href="javascript:;"><i class="add_icon"></i>添加图片</a> 
 					    <a id="upload_files" href="javascript:;">上传</a>
@@ -499,9 +499,9 @@
 		<div style='display:none;padding:20px 15px 0;'>
 				<p>样式代码：<textarea class="edit_btnStyle" placeholder='例如：height:35px;width:60px;' value='' name='btnText'  ></textarea></p>
 		</div>
-	</div>
+	</script>
 	<!-- 店头 -->
-	<div class="storefront">
+	<script type='text/html' class="storefront">
 		<form action="">						
 		    <div class="control-group replace">
 		    	<label class="control-label">背景图片:</label>
@@ -512,15 +512,15 @@
 			</div>
 			 <div class="control-group replace">			    	
 				<label for="" class="control-label">头像:</label>
-				<div class="control logo change" data-appid="change">
+				<div class="control logo change" style="width:80px;" data-appid="change">
 					<img src="${logo}" alt="" />
-					<p class="hint">点击替换图片(最佳尺寸：80 x 80 像素)</p>
 				</div>
+				<p style="padding-left:100px;" class="hint">点击替换图片(最佳尺寸：80 x 80 像素)</p>
 		    </div> 				
 		</form>    		
-	</div>			
+	</script>			
 	<!-- 橱窗 -->
-	<div class="showcase">
+	<script type='text/html' class="showcase">
 		<form action="">						
 			
 		    <div class="control-group">
@@ -546,9 +546,9 @@
 		    {{/each}}   
 				
 		</form>    		
-	</div>		
+	</script>		
 	<!-- 图片广告 -->
-	<div class="imgAd">
+	<script type='text/html' class="imgAd">
 		<form action="">						
 			{{each list}}
 		    <div class="control-group options replace">
@@ -570,9 +570,9 @@
 				</p>
 			</div>				
 		</form>    		
-	</div>			
+	</script>			
 	<!-- 图片导航 -->
-	<div class="imgNav">
+	<script type='text/html' class="imgNav">
 		<form action="">						
 			{{each list}}
 		    <div class="control-group options replace">
@@ -589,7 +589,7 @@
 		    {{/each}}   
 				
 		</form>    		
-	</div>		
+	</script>		
 	<!-- 文本导航 -->
 	<div class="textNav">
 		<form action="">						
@@ -672,12 +672,12 @@
 		</form>    		
 	</div>	
 	<!-- 活动图片 -->
-	<div class="img">
+	<script type='text/html' class="img">
 		<form action="">
 			<div class="control-group">
 				<label for="" class="control-label">商品库：</label>
 				<div class="control">
-					<div id="filelist">Your browser doesn't have Flash, Silverlight or HTML5 support.</div>
+					<div id="filelist">Your browser doesnt have Flash, Silverlight or HTML5 support.</div>
 					<div id="container">
 					    <a id="pickfiles" href="javascript:;"><i class="add_icon"></i>添加商品</a> 
 					    <a id="uploadfiles" href="javascript:;">上传</a>
@@ -722,7 +722,7 @@
 				</div>
 			</div>    			  			
 		</form>  		    		
-	</div>
+	</script>
 	<!-- 活动文字 -->
 	<div class="fullText">
 		<form action="">
@@ -773,6 +773,26 @@
 		  	<li><img src="{{= $value.src}}" alt="" /></li>
 	  	{{/each}}
 	  </ul>
+</script>
+
+<script id='uploadAndSelectImg' type="text/html">
+		<div>
+			<div  class="control-group">
+				
+				<div class="control">
+					<div id="filelist"></div>
+					<div id="container">
+					    <a id="pick_files" href="javascript:;"><i class="add_icon"></i>添加图片</a> 
+					    <a id="upload_files" href="javascript:;">上传</a>
+					</div>					
+				</div>
+			</div>
+			<ul class="piclist clearfix">
+				{{each list}}
+		  		<li><img src="{{= $value.src}}" alt="" /></li>
+	  		{{/each}}
+	  	</ul>
+		</div>
 </script>
 <!-- 弹窗内容 -->
 <div id="dialogContent">

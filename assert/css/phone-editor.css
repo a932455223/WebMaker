@@ -185,3 +185,41 @@ li {
   border:none;
   min-width: 60px;
 }
+
+.ui-dialog-grid .img_upload_box{
+  width:80px;
+}
+
+@font-face {
+  font-family:'iconfont';
+  src:url('../font/iconfont.eot');
+  src:url('../font/iconfont.eot?#iefix') format('embedded-opentype'),
+  url('../font/iconfont.woff') format('woff'),
+  url('../font/iconfont.ttf') format('truetype'),
+  url('../font/iconfont.svg#iconfont') format('svg');
+}
+
+
+
+.iconfont{
+   font-family:"iconfont" !important;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+} 
+
+.jiahao{
+  font-size: 48px;
+  color:#ccc;
+}
+.ui-dialog-grid #pick_image{
+  border:1px dashed #ccc;
+  height:80px;  
+  line-height: 80px;
+  text-align: center;
+  border-radius:5px;
+}
+
+#filelist{
+  padding:5px 0 10px 0px;
+}

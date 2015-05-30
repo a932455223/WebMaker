@@ -43,11 +43,19 @@ app.use(route.get('/page/:id/edit', edit));
 app.use(route.post('/page/delete/:id', deletePage))
 app.use(route.post('/upload',upload));
 app.use(route.get('/test',test));
+app.use(route.post('/images/:target_id',getImages));
     // app.use(route.get('/getPage/:id', getPage));
-    /** deletePage 根据id删除对应的页面 **/
 function* test(){
     yield send(this,__dirname+'/views/test.html');
 }
+
+
+function* getImages(target_id){
+    var table = wrap(db.get('images'));
+    this.body = yield table.find({target_id:parseInt(target_id)});
+
+}
+/** deletePage 根据id删除对应的页面 **/
 function* deletePage(id) {
         var pages = wrap(db.get('pages'));
         var msg = yield pages.remove({
@@ -64,6 +72,7 @@ function* upload(next){
     // if('POST' !== this.method){ return yield next;}
     var parts = parseFile(this);
     var part;
+    var target_id;
     while(part = yield parts){
         if(!part.length){
             var d = new Date();
@@ -72,8 +81,20 @@ function* upload(next){
             var filePath =  _p + '/'+part.filename;
             var stream = fs.createWriteStream(filePath);
             part.pipe(stream);
+        }else{
+            if(part[0] === 'target_id'){
+                target_id = part[1];
+            }
         }
     }
+    console.log('filePath:'+filePath+',target_id:'+target_id);
+    var table = wrap(db.get('images'));
+    var msg = yield table.insert({
+        target_id:parseInt(target_id),
+        src:filePath.substr(1),
+        created_at:new Date()
+    });
+    console.log(msg);
     this.type = 'text/json';
     this.body = {code:200,path:filePath.substr(1)};
 }

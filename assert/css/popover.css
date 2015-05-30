@@ -226,15 +226,16 @@ i {
   margin-right: 5px;
   float: none;
 }
-#popover .popover-inner #pickfiles,
-#popover .popover-inner #uploadfiles,#popover .popover-inner #pick_files,#popover .popover-inner #upload_files {
+
+#pickfiles,
+#uploadfiles,#pick_files,#upload_files {
   border: 1px solid #ccc;
   border-radius: 1px;
   background: #fff;
   color: #333;
   padding: 6px;
 }
-#popover .popover-inner #uploadfiles,#popover .popover-inner #upload_files {
+ #upload_files {
   color: #fff;
   background: #ffa200;
 }
@@ -845,3 +846,4 @@ i {
   border:1px solid #ccc;
   resize:vertical;
 }
+
