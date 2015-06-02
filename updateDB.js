@@ -3,12 +3,12 @@ var url = 'mongodb://localhost:27017/webMaker';
 var db = monk(url);
 var wrap = require('co-monk');
 
-var table = wrap(db.get('images'));
+var table = wrap(db.get('imagesInfo'));
 var data = {
-	target_id:0,
-	src:'/images/bg.jpg',
+	target_id:5,
+	component_id:16,
+	description:'自定义按钮'
 };
 data.create_at = new Date();
-var images = table.find({})
-console.log(JSON.stringify(images));
-process.exit();
+table.insert(data);
+

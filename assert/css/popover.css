@@ -821,6 +821,7 @@ i {
 .img_list{
   padding:0;
   margin:0;
+  max-width: 800px;
   padding-top:15px;
   height:108px;
 }

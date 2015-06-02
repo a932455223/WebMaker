@@ -18,7 +18,7 @@ var app = koa();
 var os = require('os');
 var path =require('path');
 var assert = require('assert');
-
+var request = require('co-request');
 var db = monk(url);
 swig.setDefaults({
     autoescape: false
@@ -87,14 +87,12 @@ function* upload(next){
             }
         }
     }
-    console.log('filePath:'+filePath+',target_id:'+target_id);
     var table = wrap(db.get('images'));
     var msg = yield table.insert({
         target_id:parseInt(target_id),
         src:filePath.substr(1),
         created_at:new Date()
     });
-    console.log(msg);
     this.type = 'text/json';
     this.body = {code:200,path:filePath.substr(1)};
 }
@@ -139,9 +137,19 @@ function* show(id) {
         var tmplPath = com.path;
         if(component_id === 2){
             tmplPath = com.path[page[i].config.size].url;
+            console.log('tmplPath:'+tmplPath);
+            var result = yield request('http://www.yst.com.cn/pc/rest/goods/tag/ff80808149a25c550149ada0801d0040?index=1&size=12');
+            page[i] = result.body;
         }
         var compile = swig.compileFile(tmplPath);
-        html += compile(page[i]);
+        var data;
+        console.log(typeof page[i]);
+        if(typeof page[i] === 'string'){
+            data = JSON.parse(page[i]);
+        }else{
+            data = page[i];
+        }
+        html += compile(data);
 
     }
     this.body = yield render('show', {

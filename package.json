@@ -23,6 +23,7 @@
     "swig": "^1.4.2"
   },
   "devDependencies": {
+    "co-request": "^0.2.1",
     "mocha": "*",
     "should": "^3.3.2",
     "supertest": "*"

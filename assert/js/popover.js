@@ -57,7 +57,7 @@ $(document).on('mouseup', magicBlur);
 $(document).on('blur', magicBlur);
 
 //公用的上传代码
-function initUploader(){
+function initUploader(target_id){
 	 var uploader = new plupload.Uploader({
             runtimes: 'html5,flash,silverlight,html4',
             browse_button: 'pick_files', // you can pass in id...
@@ -66,8 +66,9 @@ function initUploader(){
             flash_swf_url: '../js/Moxie.swf',
             silverlight_xap_url: '../js/Moxie.xap',
             multipart_params:{
-                target_id:0
+                target_id:target_id
             },
+            multi_selection:false,
             filters: {
                 max_file_size: '10mb',
                 mime_types: [{
@@ -96,7 +97,7 @@ function initUploader(){
                     });
                 },
                 FileUploaded: function(up, file, res) {
-
+                    console.log('enter the FileUploaded');
                     var rs = JSON.parse(res.response);
                     for (var i in rs) {
                         console.log(i);
@@ -105,7 +106,12 @@ function initUploader(){
                         var img = new Image();
                         img.src = rs.path;
                         // $('#popover').find('.img_list').append($('<li>').append(img))；
-                        $('.piclist').append($('<li>').append(img));
+                        if($('#popover').find('.piclist').length > 0){
+                            var imgBox = $('#popover').find('.piclist');
+                        }else{
+                            var imgBox = $('#popover').find('.img_list');
+                        }
+                        imgBox.append($('<li>').append(img));
                     }
                 },
                 UploadProgress: function(up, file) {
@@ -501,11 +507,13 @@ popover.fullText = function() {
 popover.customerBtn = function() {
         var _this = this;
         //图片上传插件
-       initUploader();
+       initUploader(5);
         var initData = JSON.parse(_this.wrap.dataset.form);
         // console.log(JSON.stringify(content.color));
 
         var backgroundImage = initData.content['background-image'];
+
+        //高亮选中图片
         if (backgroundImage) {
             $('.img_list').find('img').each(function(index) {
                 var src = this.src;
@@ -515,6 +523,14 @@ popover.customerBtn = function() {
             });
         }
 
+        //加载图片
+        $.post('/images/5').done(function(data){
+            var str = '';
+            for(var i=0;i<data.length;i++){
+                str += '<li><img src='+data[i].src+' /></li>';
+            }
+            $('#popover').find('.img_list').html(str);
+        });
         //spectrum 颜色选择组件
         var $btn = $(_this.target).find('button');
         $('#text_color').spectrum({
@@ -944,7 +960,9 @@ popover.imgAd = function() {
     }
     var currentSrc = "";
     var d = null;
-
+    if(_this.data.list.length<2){
+        $('#popover').find('.options').find('.delImgAd').remove();
+    }
     //编辑模块
     $("#popover").on("input propertychange", "input[name=imgAd]", function() {
         //@index-1 第一个选中元素为添加控件，索引-1
@@ -955,21 +973,8 @@ popover.imgAd = function() {
         //将新的data同步到data-form
         _this.setDataForm(_this.data);
     });
-    //删除模块成员	
-    $("#popover").on("click", ".delImgAd", function() {
-        //@index-1 第一个选中元素为添加控件，索引-1
-        var $this = $(this).parents(".options");
-        var index = $this.index();
-        if (_this.data.list.length <= 2) {
-            $(".delImgAd").remove();
-        }
-        //修改data
-        _this.data.list.splice(index, 1);
-        //将新的data同步到data-form
-        _this.setDataForm(_this.data);
-        //删除此条编辑
-        $this.remove();
-    });
+
+
     //新模块选择图片
     $(document).off('click');
     $(document).on("click", ".piclist>li", function(e) {
@@ -989,6 +994,23 @@ popover.imgAd = function() {
         $(_this.wrap).find(".module").trigger("click");
         //return false; //设置确定后是否关闭
         _this.d.close().remove();
+    });
+
+    //删除模块成员    
+    $('#popover').off('click.delImgAd');
+    $("#popover").on("click.delImgAd", ".delImgAd", function() {
+        //@index-1 第一个选中元素为添加控件，索引-1
+        var $this = $(this).parents(".options");
+        var index = $this.index();
+        if (_this.data.list.length <= 2) {
+            $(".delImgAd").remove();
+        }
+        //修改data
+        _this.data.list.splice(index, 1);
+        //将新的data同步到data-form
+        _this.setDataForm(_this.data);
+        //删除此条编辑
+        $this.remove();
     });
     _this.imgAdstate = true;
 };
@@ -1033,7 +1055,7 @@ popover.showcase = function() {
 popover.storefront = function() {
     var _this = this;
     //替换图片
-    $(document).off();
+    $(document).off('click');
     $(document).on("click", ".piclist>li", function(e) {
         $(this).addClass("current").siblings().removeClass("current");
         currentSrc = $(this).find("img").attr("src");
@@ -1068,7 +1090,6 @@ $(".popover-inner").on("click", ".addImg", function(e) {
         cancelDisplay: false,
     });
     popover.d.show();
-
     popover.d.target = $(this);
     popover.d.index = $(this).parents(".replace").index(".replace");
     $(".ui-dialog-footer").hide();
@@ -1076,14 +1097,14 @@ $(".popover-inner").on("click", ".addImg", function(e) {
 
 //调用dialog 单个图片
 $(".popover-inner").on("click", ".change", function(e) {
-
-    $.post('/images/0').done(function(data) {
+    var target_id = this.dataset.target;
+    $.post('/images/'+target_id).done(function(data) {
         popover.d.content($('#uploadAndSelectImg').tmpl({
             list: data
         }));
         //加载上传插件
         //图片上传插件
-        initUploader();
+        initUploader(target_id);
     });
 
     popover.d = dialog({

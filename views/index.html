@@ -466,24 +466,7 @@
 			<div style='padding-left:15px;'>
 				<p>已有底纹：</p>
 				<ul class='img_list clearfix'>
-					<li>
-						<img src='/upload/bg01.jpg' />
-					</li>
-					<li>
-						<img src='/upload/bg02.jpg' />
-					</li>
-					<li>
-						<img src='/upload/bg03.jpg' />
-					</li>
-					<li>
-						<img src='/upload/bg04.jpg' />
-					</li>
-					<li>
-						<img src='/upload/bg05.jpg' />
-					</li>
-					<li>
-						<img src='/upload/bg06.jpg' />
-					</li>
+					
 				</ul>
 			</div>
 		</form>
@@ -505,14 +488,14 @@
 		<form action="">						
 		    <div class="control-group replace">
 		    	<label class="control-label">背景图片:</label>
-				<div class="control bg change" data-appid="change">
+				<div class="control bg change" data-target=0 data-appid="change">
 					<img src="${bg}" alt="" />
 					<p class="hint">点击替换图片(最佳尺寸：640 x 200 像素)</p>
 				</div>	
 			</div>
 			 <div class="control-group replace">			    	
 				<label for="" class="control-label">头像:</label>
-				<div class="control logo change" style="width:80px;" data-appid="change">
+				<div class="control logo change" style="width:80px;" data-target=1 data-appid="change">
 					<img src="${logo}" alt="" />
 				</div>
 				<p style="padding-left:100px;" class="hint">点击替换图片(最佳尺寸：80 x 80 像素)</p>
@@ -537,7 +520,7 @@
 		    </div> 
 		    {{each list}}
 			    <div class="control-group options showcase replace">
-					<div class="control-choice addImg" data-appid="addImg"><img src="{{= $value.src}}" alt="" /><p class="hint">重新上传</p></div>		    	
+					<div class="control-choice change" data-target=4 data-appid="change"><img src="{{= $value.src}}" alt="" /><p class="hint">重新上传</p></div>		    	
 					<label for="" class="control-label">链接到：</label>
 					<div class="control">
 						<a class="dialog" href="javascript:void(0)" data-appid="goodsDialog">+从商品标签或微杂志中选择</a>
@@ -552,7 +535,7 @@
 		<form action="">						
 			{{each list}}
 		    <div class="control-group options replace">
-				<div class="control-choice addImg" data-appid="addImg"><img src="{{= $value.src}}" alt="" /><p class="hint">重新上传</p></div>
+				<div class="control-choice change" data-target=2 data-appid="change"><img src="{{= $value.src}}" alt="" /><p class="hint">重新上传</p></div>
 				<label for="" class="control-label">标题：</label>
 				<div class="control">
 					<input class="input" name="imgAd" type="text" value="{{= $value.text}}" />
@@ -564,7 +547,7 @@
 				<div class="actions"><span class="delete delImgAd">×</span></div>			   
 		    </div> 
 		    {{/each}}   
-			<div class="control-group options add_imgAd addImg" data-appid="addImg">
+			<div class="control-group options add_imgAd change" data-target=2 data-appid="change">
 				<p class="description">
 					<i class="add_icon"></i>添加一个图片广告
 				</p>
@@ -576,7 +559,7 @@
 		<form action="">						
 			{{each list}}
 		    <div class="control-group options replace">
-				<div class="control-choice addImg" data-appid="addImg"><img src="{{= $value.src}}" alt="" /><p class="hint">重新上传</p></div>
+				<div class="control-choice change" data-target=3 data-appid="change"><img src="{{= $value.src}}" alt="" /><p class="hint">重新上传</p></div>
 				<label for="" class="control-label">文字：</label>
 				<div class="control">
 					<input class="input" name="imgNav" type="text" value="{{= $value.text}}" />
