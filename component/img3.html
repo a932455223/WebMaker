@@ -3,7 +3,7 @@
         {%for item in data.goods%}
         <li class="clearfix">
             <div class='good-img'>
-                <img src='{{item.photo}}800x800' />
+                <a href='http://m.yst.com.cn/i/product?product_id={{item.id}}'><img src='{{item.photo}}800x800' /></a>
             </div>
             <div class='good-text'>
                 <p>{{item.name}}</p>

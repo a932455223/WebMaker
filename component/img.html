@@ -2,7 +2,7 @@
 	<ul class='goods_big'>
 	{%for item in data.goods%}
 		<li>
-			<img src='{{item.photo}}800x800' />
+			<a href='http://m.yst.com.cn/i/product?product_id={{item.id}}'><img src='{{item.photo}}800x800' /></a>
 			<div class="product_info clearfix">
 				<span class='left'>{{item.name}}</span><span class='price'>{{salePrice}}</span><span class='cart_log'></span>
 			</div>
