@@ -97,7 +97,6 @@ function initUploader(target_id){
                     });
                 },
                 FileUploaded: function(up, file, res) {
-                    console.log('enter the FileUploaded');
                     var rs = JSON.parse(res.response);
                     for (var i in rs) {
                         console.log(i);
@@ -106,12 +105,12 @@ function initUploader(target_id){
                         var img = new Image();
                         img.src = rs.path;
                         // $('#popover').find('.img_list').append($('<li>').append(img))；
-                        if($('#popover').find('.piclist').length > 0){
-                            var imgBox = $('#popover').find('.piclist');
+                        if($('.ui-dialog').find('.piclist').length > 0){
+                            var $imgBox = $('.ui-dialog').find('.piclist');
                         }else{
-                            var imgBox = $('#popover').find('.img_list');
+                            var $imgBox = $('#popover').find('.img_list');
                         }
-                        imgBox.append($('<li>').append(img));
+                        $imgBox.append($('<li>').append(img));
                     }
                 },
                 UploadProgress: function(up, file) {
@@ -607,56 +606,10 @@ popover.customerBtn = function() {
     //图片上传
 popover.img = function() {
     var _this = this;
-
-    //图片上传插件
-    var uploader = new plupload.Uploader({
-        runtimes: 'html5,flash,silverlight,html4',
-        browse_button: 'pickfiles', // you can pass in id...
-        container: document.getElementById('container'), // ... or DOM Element itself
-        url: '/upload',
-        flash_swf_url: '../js/Moxie.swf',
-        silverlight_xap_url: '../js/Moxie.xap',
-
-        filters: {
-            max_file_size: '10mb',
-            mime_types: [{
-                title: "Image files",
-                extensions: "jpg,gif,png"
-            }, {
-                title: "Zip files",
-                extensions: "zip"
-            }]
-        },
-
-        init: {
-            PostInit: function() {
-                document.getElementById('filelist').innerHTML = '';
-
-                $('#container').on("click", "#uploadfiles", function() {
-                    uploader.start();
-                    return false;
-                });
-            },
-
-            FilesAdded: function(up, files) {
-                plupload.each(files, function(file) {
-                    document.getElementById('filelist').innerHTML += '<div id="' + file.id + '">' + file.name + ' (' + plupload.formatSize(file.size) + ') <b></b></div>';
-                });
-            },
-
-            UploadProgress: function(up, file) {
-                document.getElementById(file.id).getElementsByTagName('b')[0].innerHTML = '<span>' + file.percent + "%</span>";
-            },
-
-            Error: function(up, err) {
-                document.getElementById('console').innerHTML += "\nError #" + err.code + ": " + err.message;
-            }
-        }
-    });
-    uploader.init();
     //初始化编辑框
     // if(_this.imgstate){return;}
     var data = _this.data;
+
     var $target = $(_this.target);
     //标题
     if (data.config.title) {
@@ -676,26 +629,38 @@ popover.img = function() {
     } else {
         $(".popover-inner input[name='price']").attr("checked", false);
     }
+
+    if(data.config.products){
+       $('#changeProducts').val(data.config.products);
+    }
     //大小
     $(".popover-inner input[name='size']").eq(data.config.size).attr("checked", "checked").trigger("change");
     //编辑模块
     //切换大小图
     $(".popover-inner").on("change", "input[name='size']", function(e) {
+        var $parent = $(popover.target).parent();
+        var data = JSON.parse($parent[0].dataset.form);
         data.config.size = e.currentTarget.value;
         _this.setDataForm(data);
     });
     //切换标题
     $(".popover-inner").on("change", "input[name='title']", function(e) {
+         var $parent = $(popover.target).parent();
+        var data = JSON.parse($parent[0].dataset.form);
         data.config.title = $(this).attr("checked") ? "showtitle" : "";
         _this.setDataForm(data);
     });
     //切换价格
     $(".popover-inner").on("change", "input[name='price']", function(e) {
+         var $parent = $(popover.target).parent();
+        var data = JSON.parse($parent[0].dataset.form);
         data.config.price = $(this).attr("checked") ? "showprice" : "";
         _this.setDataForm(data);
     });
     //切换购物车
     $(".popover-inner").on("change", "input[name='cart']", function(e) {
+        var $parent = $(popover.target).parent();
+        var data = JSON.parse($parent[0].dataset.form);
         data.config.cart = $(this).attr("checked") ? "showcart" : "";
         _this.setDataForm(data);
     });
@@ -1146,3 +1111,10 @@ $(function() {
         d.show();
     });
 });
+
+$('#popover').on('change','#changeProducts',function(){
+        var val = this.value;
+        var obj = JSON.parse($(popover.target).parent()[0].dataset.form);
+        obj.config.products = val;
+        $(popover.target).parent()[0].dataset.form = JSON.stringify(obj);
+    });

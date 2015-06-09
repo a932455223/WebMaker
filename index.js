@@ -120,7 +120,6 @@ function* index() {
 /**
  * Show post :id.
  */
-
 function* show(id) {
     var pages = wrap(db.get('pages'));
     var comTmpl = wrap(db.get('tmpl'));
@@ -137,13 +136,12 @@ function* show(id) {
         var tmplPath = com.path;
         if(component_id === 2){
             tmplPath = com.path[page[i].config.size].url;
-            console.log('tmplPath:'+tmplPath);
-            var result = yield request('http://www.yst.com.cn/pc/rest/goods/tag/ff80808149a25c550149ada0801d0040?index=1&size=12');
+            var products = page[i].config.products || 'ff80808149a25c550149ada01f89003d';
+            var result = yield request('http://www.yst.com.cn/pc/rest/goods/tag/'+products+'?index=1&size=12');
             page[i] = result.body;
         }
         var compile = swig.compileFile(tmplPath);
         var data;
-        console.log(typeof page[i]);
         if(typeof page[i] === 'string'){
             data = JSON.parse(page[i]);
         }else{

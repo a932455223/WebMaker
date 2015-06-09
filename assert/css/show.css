@@ -291,14 +291,14 @@ article{
 	box-sizing:border-box;
 	position: relative;
 }
-.goods_bigSmall li:nth-child(2){
+.goods_bigSmall li:nth-child(3n+2){
 	margin-right: 2%;
 }
 .goods_bigSmall li img{
 	width:100%;
 	height:auto;
 }
-.goods_bigSmall li:nth-child(1){
+.goods_bigSmall li:nth-child(3n+1){
 	width:100%;
 }
 .goods_bigSmall .product_info{

@@ -1,28 +1,12 @@
 <div class='img'>
 	<ul class='goods_big'>
+	{%for item in data.goods%}
 		<li>
-			<img src='/images/gg1.jpg' />
+			<img src='{{item.photo}}800x800' />
 			<div class="product_info clearfix">
-				<span class='left'>都市余味碧根果190g</span><span class='price'>88.00</span><span class='cart_log'></span>
+				<span class='left'>{{item.name}}</span><span class='price'>{{salePrice}}</span><span class='cart_log'></span>
 			</div>
 		</li>
-		<li>
-			<img src='/images/gg2.jpg' />
-			<div class="product_info clearfix">
-				<span class='left'>都市余味碧根果100g</span><span class='price'>66.00</span><span class='cart_log'></span>
-			</div>
-		</li>
-		<li>
-			<img src='/images/gg3.jpg' />
-			<div class="product_info clearfix">
-				<span class='left'>都市余坚果100g</span><span class='price'>99.00</span><span class='cart_log'></span>
-			</div>
-		</li>
-		<li>
-			<img src='/images/gg4.jpg' />
-			<div class="product_info clearfix">
-				<span class='left'>都市余味碧根果350g</span><span class='price'>120.00</span><span class='cart_log'></span>
-			</div>
-		</li>
+	{%endfor%}
 	</ul>
 </div>
