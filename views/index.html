@@ -696,7 +696,12 @@
 						<option value='ff80808149a25c550149ad9f41db0037'>延缓衰老</option>
 						<option value='ff80808149a25c550149ad9ffdcf003c'>美白抗氧化</option>
 					</select>
+					<button href='#' class='allProducts'>选择商品</button>
 					<p class="hint">选择商品来源后，左侧实时预览暂不支持显示其包含的商品数据</p>
+					<div id='productList' class='clearfix'>
+					</div>
+					<ul id='productPager' class='clearfix'>
+					</ul>
 				</div>
 			</div>  
 		</form>  		    		
@@ -751,6 +756,17 @@
 		  	<li><img src="{{= $value.src}}" alt="" /></li>
 	  	{{/each}}
 	  </ul>
+</script>
+<script id='product-tmpl' type="text/html">
+{{each goods}}
+<li data-productid={{= $value.id}}>
+    <img src='{{= $value.photo}}800x800' />
+    <p class='txt'>{{= $value.name}}</p>
+    <div class='selected'>
+        <img src='/images/selected.png' />
+    </div>
+</li>
+{{/each}}
 </script>
 
 <script id='uploadAndSelectImg' type="text/html">
@@ -820,6 +836,7 @@
 </script>
 <script type="text/javascript" src="/js/jquery-1-8-3.js"></script>
 <script type="text/javascript" src='/js/JQueryUI/jquery-ui.min.js'></script>
+<script type="text/javascript" src='/js/pagination.js'></script>
 <script type="text/javascript" src="/js/jquery.tmpl.js"></script>
 <script type="text/javascript" src='/js/QRcode/qrcode-light.js'></script>
 <script type="text/javascript" src='/js/QRcode/qrgen-canvas.js'></script>

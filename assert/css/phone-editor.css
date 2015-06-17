@@ -17,6 +17,7 @@ li {
 }
 .clearfix {
   *zoom: 1;
+  overflow: hidden;
 }
 .clearfix:before,
 .clearfix:after {
@@ -222,4 +223,59 @@ li {
 
 #filelist{
   padding:5px 0 10px 0px;
+}
+#productList li{
+  width:150px;
+  float: left;
+  position: relative;
+  margin:0 8px 8px 0;
+  padding:5px;
+  background: #fff;
+}
+#productList li img{
+  width:100%;
+}
+#productList li .selected{
+  position: absolute;
+  top:5px;
+  right:5px;
+  display: none;
+}
+#productList li .selected img{
+  width:30px;
+}
+#productList li.active .selected{
+ display: block;
+}
+
+#productList li.active .selected{
+
+}
+#productList li .txt{
+  font-size:13px;
+  padding:5px 0;
+  margin:0;
+  text-align: center;
+}
+#productPager li{
+  float: left;
+}
+
+#productPager li{
+  padding:6px 12px;
+  border:1px solid #ccc;
+  border-left: none;
+  background:#fff;
+}
+#productPager>li>a{
+  line-height: normal !important;
+  padding: 0 !important;
+}
+#productPager li:last-child{
+  border-right: 1px solid #ccc;
+  border-radius: 0 5px 5px 0;
+}
+#productPager li:first-child{
+  border-left: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
 }

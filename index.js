@@ -44,12 +44,16 @@ app.use(route.post('/page/delete/:id', deletePage))
 app.use(route.post('/upload',upload));
 app.use(route.get('/test',test));
 app.use(route.post('/images/:target_id',getImages));
+app.use(route.get('/products',getProducts));
     // app.use(route.get('/getPage/:id', getPage));
 function* test(){
     yield send(this,__dirname+'/views/test.html');
 }
 
-
+function* getProducts(){
+    var result = yield request('http://182.254.222.64/pc/security/landing/goods?_='+Math.random());
+    this.body = JSON.parse(result.body);
+}
 function* getImages(target_id){
     var table = wrap(db.get('images'));
     this.body = yield table.find({target_id:parseInt(target_id)});

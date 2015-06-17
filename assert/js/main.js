@@ -83,7 +83,7 @@ var default_config = ['', {
         title: "showtitle",
         price: "showprice",
         cart: "showcart",
-        products:''
+        products:[]
     }
 }, {
     id: 3,

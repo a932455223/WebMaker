@@ -607,7 +607,7 @@ popover.customerBtn = function() {
 popover.img = function() {
     var _this = this;
     //初始化编辑框
-    // if(_this.imgstate){return;}
+    if(_this.imgstate){return;}
     var data = _this.data;
 
     var $target = $(_this.target);
@@ -663,6 +663,44 @@ popover.img = function() {
         var data = JSON.parse($parent[0].dataset.form);
         data.config.cart = $(this).attr("checked") ? "showcart" : "";
         _this.setDataForm(data);
+    });
+
+    $(".popover-inner").on("click",".allProducts",function(e){
+        e.preventDefault();
+        $.get('/products').done(function(ctx){
+            var data = ctx.data;
+            $('#product-tmpl').tmpl(data).appendTo($('#productList').empty());
+            $('#productPager').pagination({
+                items:data.pagination.count,
+                itemsOnPage:10,
+                prevText:'上一页',
+                nextText:'下一页',
+                onPageClick:function(pageNumber){
+                    console.log(pageNumber);
+                }
+            });
+        });
+    });
+
+    $('.popover-inner').on('click','#productList>li',function(){
+        var product_id = $(this).data('productid');
+        var $parent = $(popover.target).parent();
+        var data = JSON.parse($parent[0].dataset.form);
+        if($(this).is('.active')){
+            $(this).removeClass('active');
+            var index = data.config.products.indexOf(product_id);
+            if(index > 0){
+                data.config.products.splice(index,1);
+                $parent[0].dataset.form = JSON.stringify(data);
+            }
+        }else{
+            $(this).addClass('active');
+            var index = data.config.products.indexOf(product_id);
+            if(index < 0){
+                data.config.products.push(product_id);
+                $parent[0].dataset.form = JSON.stringify(data);
+            }
+        }
     });
     _this.imgstate = true;
 };
