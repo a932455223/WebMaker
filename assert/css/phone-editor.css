@@ -224,6 +224,10 @@ li {
 #filelist{
   padding:5px 0 10px 0px;
 }
+#productList{
+  max-height:600px;
+  overflow: scroll;
+}
 #productList li{
   width:150px;
   float: left;
@@ -231,6 +235,7 @@ li {
   margin:0 8px 8px 0;
   padding:5px;
   background: #fff;
+  cursor: pointer;
 }
 #productList li img{
   width:100%;
@@ -247,7 +252,13 @@ li {
 #productList li.active .selected{
  display: block;
 }
-
+.allProducts{
+  padding:5px 8px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  background:#fff;
+  color:#555;
+}
 #productList li.active .selected{
 
 }
@@ -256,6 +267,11 @@ li {
   padding:5px 0;
   margin:0;
   text-align: center;
+  overflow:hidden;
+  -wegbkit-text-overflow:ellipsis;
+  text-overflow:ellipsis;
+  white-space:nowrap; 
+  width:100%;
 }
 #productPager li{
   float: left;

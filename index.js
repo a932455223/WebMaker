@@ -44,14 +44,16 @@ app.use(route.post('/page/delete/:id', deletePage))
 app.use(route.post('/upload',upload));
 app.use(route.get('/test',test));
 app.use(route.post('/images/:target_id',getImages));
-app.use(route.get('/products',getProducts));
+app.use(route.get('/products/:index',getProducts));
     // app.use(route.get('/getPage/:id', getPage));
 function* test(){
     yield send(this,__dirname+'/views/test.html');
 }
 
-function* getProducts(){
-    var result = yield request('http://182.254.222.64/pc/security/landing/goods?_='+Math.random());
+function* getProducts(index){
+    index = index||1;
+
+    var result = yield request('http://www.yst.com.cn/pc/security/landing/goods?index='+index+'&_='+Math.random());
     this.body = JSON.parse(result.body);
 }
 function* getImages(target_id){
@@ -140,8 +142,12 @@ function* show(id) {
         var tmplPath = com.path;
         if(component_id === 2){
             tmplPath = com.path[page[i].config.size].url;
-            var products = page[i].config.products || 'ff80808149a25c550149ada01f89003d';
-            var result = yield request('http://www.yst.com.cn/pc/rest/goods/tag/'+products+'?index=1&size=12');
+            var products = page[i].config.products;
+            if(!products || products.length === 0){
+                continue;
+            }
+            var result = yield request('http://www.yst.com.cn/pc/security/landing/goods/'+products.join(','));
+            console.log('http://182.254.222.64/pc/security/landing/goods/'+products.join(','));
             page[i] = result.body;
         }
         var compile = swig.compileFile(tmplPath);

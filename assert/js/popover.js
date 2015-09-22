@@ -562,25 +562,35 @@ popover.customerBtn = function() {
 
         //btnText的change事件
         var timeid;
-        $('#edit_btnText').on('focus', function() {
+        $('#edit_btnText,#edit_btnUrl').on('focus', function() {
             var $this = $(this);
+            var name = this.name;
+            console.log(name);
             $this.select();
             timeid = setInterval(function() {
                 var wrap = $(_this.wrap)[0];
                 var formData = JSON.parse(wrap.dataset.form);
-                formData.content.btnText = $this.val();
-                $btn.html($this.val());
+                formData.content[name] = $this.val();
                 wrap.dataset.form = JSON.stringify(formData);
+                if(name === 'btnText'){
+                    $btn.html($this.val());
+                }
             }, 400);
         });
 
         $('#edit_btnText').on('blur', function() {
+              var name = this.name;  
+              var $this = $(this);  
+              var wrap = $(_this.wrap)[0];
+              var formData = JSON.parse(wrap.dataset.form);
+              console.log(JSON.stringify(formData));  
             if (timeid) clearInterval(timeid);
-            if ($(this).val().trim() === '') {
-                $(this).val('这是一个按钮');
+            if ($this.val().trim() === '') {
+                $this.val('这是一个按钮');
                 $btn.html('这是一个按钮');
             }
         });
+
 
         $('.img_list').on('click', 'li', function() {
             var wrap = $(_this.wrap)[0];
@@ -606,8 +616,7 @@ popover.customerBtn = function() {
     //图片上传
 popover.img = function() {
     var _this = this;
-    //初始化编辑框
-    if(_this.imgstate){return;}
+    
     var data = _this.data;
 
     var $target = $(_this.target);
@@ -636,6 +645,10 @@ popover.img = function() {
     //大小
     $(".popover-inner input[name='size']").eq(data.config.size).attr("checked", "checked").trigger("change");
     //编辑模块
+
+
+    //初始化编辑框
+    if(_this.imgstate){return;}
     //切换大小图
     $(".popover-inner").on("change", "input[name='size']", function(e) {
         var $parent = $(popover.target).parent();
@@ -667,8 +680,9 @@ popover.img = function() {
 
     $(".popover-inner").on("click",".allProducts",function(e){
         e.preventDefault();
-        $.get('/products').done(function(ctx){
+        $.get('/products/1').done(function(ctx){
             var data = ctx.data;
+            var $parent = $(popover.target).parent();
             $('#product-tmpl').tmpl(data).appendTo($('#productList').empty());
             $('#productPager').pagination({
                 items:data.pagination.count,
@@ -676,7 +690,18 @@ popover.img = function() {
                 prevText:'上一页',
                 nextText:'下一页',
                 onPageClick:function(pageNumber){
-                    console.log(pageNumber);
+                    var obj = JSON.parse($parent[0].dataset.form);
+                    $.get('/products/'+pageNumber).done(function(ctx){
+                        var data = ctx.data;
+                        for(var index in data.goods){
+                            if(obj.config.products.indexOf(data.goods[index].id) > -1){
+                                data.goods[index].selected = true;
+                            }
+                        }
+                        $('#product-tmpl').tmpl(data).appendTo($('#productList').empty());
+                    }).fail(function(){
+                        alert('读取数据出现错误。');
+                    });
                 }
             });
         });
@@ -689,14 +714,14 @@ popover.img = function() {
         if($(this).is('.active')){
             $(this).removeClass('active');
             var index = data.config.products.indexOf(product_id);
-            if(index > 0){
+            if(index > -1){
                 data.config.products.splice(index,1);
                 $parent[0].dataset.form = JSON.stringify(data);
             }
         }else{
             $(this).addClass('active');
             var index = data.config.products.indexOf(product_id);
-            if(index < 0){
+            if(index === -1){
                 data.config.products.push(product_id);
                 $parent[0].dataset.form = JSON.stringify(data);
             }

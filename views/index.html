@@ -65,14 +65,14 @@
 	</div>
 	<div id="main" class="main no-tab">
 		<div class="nav_wrap">
-			<ul>
+			<ul style="display:none;">
 				<li class="nav_wrap_item active">1、创建活动</li>
 				<li class="nav_wrap_item active">2、选择模板</li>
 				<li class="nav_wrap_item active">3、活动设计</li>
 				<li class="nav_wrap_item">4、完成</li>
 			</ul>
 		</div>
-		<div class="dash_bar">
+		<div class="dash_bar" style="display:none;">
 			<ul>
 				<li class="active opr_save">
 					<div class="step_item">
@@ -256,24 +256,24 @@
                 {{else config.size==3}}
                 <ul class="goods-list">
                     <li>
-                        <div class="good-image">第二个商品</div>
+                        <div class="good-image">第一个商品</div>
                         <div class="good-txt">
-                            <p class="up">此处显示商品名称</p>
-                            <p class="down">￥6.0</p>
+                            <p class="up custom-goods-title">此处显示商品名称</p>
+                            <p class="down custom-goods-price">￥6.0</p>
                         </div>
                     </li>
                     <li>
                         <div class="good-image">第二个商品</div>
                         <div class="good-txt">
-                            <p class="up">此处显示商品名称</p>
-                            <p class="down">￥6.0</p>
+                            <p class="up custom-goods-title">此处显示商品名称</p>
+                            <p class="down custom-goods-price">￥6.0</p>
                         </div>
                     </li>
                     <li>
-                        <div class="good-image">第二个商品</div>
+                        <div class="good-image">第三个商品</div>
                         <div class="good-txt">
-                            <p class="up">此处显示商品名称</p>
-                            <p class="down">￥6.0</p>
+                            <p class="up"><span class="custom-goods-title">此处显示商品名称</span></p>
+                            <p class="down"><span class="custom-goods-price">￥6.0</span></p>
                         </div>
                     </li>
                 </ul>
@@ -479,6 +479,9 @@
 		<div style='padding:20px 15px 0;'>
 				<p>按钮文字：<input id='edit_btnText' value='这是一个按钮' name='btnText'  /></p>
 		</div>
+		<div style='padding:20px 15px 0;'>
+				<p>按钮链接：<input id='edit_btnUrl' value='' name='btnUrl'  /></p>
+		</div>
 		<div style='display:none;padding:20px 15px 0;'>
 				<p>样式代码：<textarea class="edit_btnStyle" placeholder='例如：height:35px;width:60px;' value='' name='btnText'  ></textarea></p>
 		</div>
@@ -662,16 +665,16 @@
 			<div class="control-group">
 				<label for="" class="control-label">显示方式：</label>
 				<div class="control">
-					<label for="" class="radio inline"><input type="radio" name="size" value="0" checked=""/>大图</label>
-					<label for="" class="radio inline"><input type="radio" name="size" value="1" />小图</label>
-					<label for="" class="radio inline"><input type="radio" name="size" value="2" />一大两小</label>
-					<label for="" class="radio inline"><input type="radio" name="size" value="3" />列表</label>
+					<label for="radio_one" class="radio inline"><input id='radio_one' type="radio" name="size" value="0"/>大图</label>
+					<label for="radio_two" class="radio inline"><input id='radio_two' type="radio" name="size" value="1" />小图</label>
+					<label for="radio_three" class="radio inline"><input id='radio_three' type="radio" name="size" value="2" />一大两小</label>
+					<label for="radio_four" class="radio inline"><input id='radio_four' type="radio" name="size" value="3" />列表</label>
 				</div>
 			</div>
 			<div class="control-group">
 				<label for="" class="control-label">商品名：</label>
 				<div class="control">
-					<label for="" class="radio inline"><input type="checkbox" name="title" value="0" />显示商品名（小图的时候不会显示商品名）</label>
+					<label for="checkbox_one" class="radio inline"><input id='checkbox_one' type="checkbox" name="title" value="0" />显示商品名（小图的时候不会显示商品名）</label>
 				</div>
 			</div>    			
 			<div class="control-group">
@@ -747,7 +750,7 @@
 </script>
 <script id='product-tmpl' type="text/html">
 {{each goods}}
-<li data-productid={{= $value.id}}>
+<li class='{{= $value.selected ? "active":""}}' data-productid={{= $value.id}}>
     <img src='{{= $value.photo}}800x800' />
     <p class='txt'>{{= $value.name}}</p>
     <div class='selected'>

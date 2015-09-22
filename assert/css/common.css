@@ -107,7 +107,7 @@ a:hover,.header_nav ul li.active a{color:#ffa200;}
 .page_nav{margin: 20px 0; font-size: 14px; position: relative;}
 .page_nav em{display: inline-block; margin-left: 3px; margin-bottom: 8px; font-weight: 400;font-style: normal;vertical-align: middle;color: #a3a3a3;}
 .page_nav a{line-height: 26px;vertical-align: bottom;}
-.page_bottom{border-top: 1px solid #e7e7eb; width: 100%; float: left; padding: 20px 0;margin-top: 20px;}
+.page_bottom{border-top: 1px solid #e7e7eb; width: 100%; float: left; padding: 20px 0;margin-top: 120px;}
 .page_bottom.noborder{border: none;}
 .page_filter{font-size: 14px; min-height: 30px; position: relative; padding: 10px 0;}
 .page_filter>ul>li{float: left; padding-right: 10px;}

@@ -346,6 +346,10 @@ article{
 	padding:5px;
 	color:#555;
 }
+.goods_list .good-text a{
+	color:#555;
+	text-decoration: none;
+}
 .goods_list img{
 	width:100%;
 }
