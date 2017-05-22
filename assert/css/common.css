@@ -107,7 +107,7 @@ a:hover,.header_nav ul li.active a{color:#ffa200;}
 .page_nav{margin: 20px 0; font-size: 14px; position: relative;}
 .page_nav em{display: inline-block; margin-left: 3px; margin-bottom: 8px; font-weight: 400;font-style: normal;vertical-align: middle;color: #a3a3a3;}
 .page_nav a{line-height: 26px;vertical-align: bottom;}
-.page_bottom{border-top: 1px solid #e7e7eb; width: 100%; float: left; padding: 20px 0;margin-top: 20px;}
+.page_bottom{border-top: 1px solid #e7e7eb; width: 100%; float: left; padding: 20px 0;margin-top: 120px;}
 .page_bottom.noborder{border: none;}
 .page_filter{font-size: 14px; min-height: 30px; position: relative; padding: 10px 0;}
 .page_filter>ul>li{float: left; padding-right: 10px;}
@@ -780,7 +780,7 @@ table.table_sku_stock th.th_code{width: 90px;}
 .phone_preview .add_field h4{text-align: center;font-size: 14px;line-height: 40px;font-weight: bold;}
 .add_field ul{color: #333;font-size: 12px;margin-left: -5px; display: table;}
 .add_field li{float: left;display: table;margin: 0 0 10px 5px;background: #fff;}
-.add_field li a{display: table-cell;width: 60px;height: 40px;color: #07d; box-sizing: border-box;border: 1px solid #d1d1d1;line-height: 14px;text-align: center;vertical-align: middle;cursor: pointer;}
+.add_field li a{display: table-cell;width: 60px;padding:0 5px;height: 40px;color: #07d; border: 1px solid #d1d1d1;line-height: 14px;text-align: center;vertical-align: middle;cursor: pointer;}
 .phone_sidebar{margin-left: 364px !important;}
 
 /*活动设计*/

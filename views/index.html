@@ -65,14 +65,14 @@
 	</div>
 	<div id="main" class="main no-tab">
 		<div class="nav_wrap">
-			<ul>
+			<ul style="display:none;">
 				<li class="nav_wrap_item active">1、创建活动</li>
 				<li class="nav_wrap_item active">2、选择模板</li>
 				<li class="nav_wrap_item active">3、活动设计</li>
 				<li class="nav_wrap_item">4、完成</li>
 			</ul>
 		</div>
-		<div class="dash_bar">
+		<div class="dash_bar" style="display:none;">
 			<ul>
 				<li class="active opr_save">
 					<div class="step_item">
@@ -256,24 +256,24 @@
                 {{else config.size==3}}
                 <ul class="goods-list">
                     <li>
-                        <div class="good-image">第二个商品</div>
+                        <div class="good-image">第一个商品</div>
                         <div class="good-txt">
-                            <p class="up">此处显示商品名称</p>
-                            <p class="down">￥6.0</p>
+                            <p class="up custom-goods-title">此处显示商品名称</p>
+                            <p class="down custom-goods-price">￥6.0</p>
                         </div>
                     </li>
                     <li>
                         <div class="good-image">第二个商品</div>
                         <div class="good-txt">
-                            <p class="up">此处显示商品名称</p>
-                            <p class="down">￥6.0</p>
+                            <p class="up custom-goods-title">此处显示商品名称</p>
+                            <p class="down custom-goods-price">￥6.0</p>
                         </div>
                     </li>
                     <li>
-                        <div class="good-image">第二个商品</div>
+                        <div class="good-image">第三个商品</div>
                         <div class="good-txt">
-                            <p class="up">此处显示商品名称</p>
-                            <p class="down">￥6.0</p>
+                            <p class="up"><span class="custom-goods-title">此处显示商品名称</span></p>
+                            <p class="down"><span class="custom-goods-price">￥6.0</span></p>
                         </div>
                     </li>
                 </ul>
@@ -451,12 +451,12 @@
 	</div>
 
 	<!-- customerBtn -->
-	<div class="customerBtn">
+	<script type='text/html' class="customerBtn">
 		<form action="/" enctype='multipart/form-data'>
 			<div  class="control-group">
 				<label for="" class="control-label">上传图片：</label>
 				<div class="control">
-					<div id="filelist">Your browser doesn't have Flash, Silverlight or HTML5 support.</div>
+					<div id="filelist">Your browser doesnt have Flash, Silverlight or HTML5 support.</div>
 					<div id="container">
 					    <a id="pick_files" href="javascript:;"><i class="add_icon"></i>添加图片</a> 
 					    <a id="upload_files" href="javascript:;">上传</a>
@@ -466,24 +466,7 @@
 			<div style='padding-left:15px;'>
 				<p>已有底纹：</p>
 				<ul class='img_list clearfix'>
-					<li>
-						<img src='/upload/bg01.jpg' />
-					</li>
-					<li>
-						<img src='/upload/bg02.jpg' />
-					</li>
-					<li>
-						<img src='/upload/bg03.jpg' />
-					</li>
-					<li>
-						<img src='/upload/bg04.jpg' />
-					</li>
-					<li>
-						<img src='/upload/bg05.jpg' />
-					</li>
-					<li>
-						<img src='/upload/bg06.jpg' />
-					</li>
+					
 				</ul>
 			</div>
 		</form>
@@ -496,31 +479,34 @@
 		<div style='padding:20px 15px 0;'>
 				<p>按钮文字：<input id='edit_btnText' value='这是一个按钮' name='btnText'  /></p>
 		</div>
+		<div style='padding:20px 15px 0;'>
+				<p>按钮链接：<input id='edit_btnUrl' value='' name='btnUrl'  /></p>
+		</div>
 		<div style='display:none;padding:20px 15px 0;'>
 				<p>样式代码：<textarea class="edit_btnStyle" placeholder='例如：height:35px;width:60px;' value='' name='btnText'  ></textarea></p>
 		</div>
-	</div>
+	</script>
 	<!-- 店头 -->
-	<div class="storefront">
+	<script type='text/html' class="storefront">
 		<form action="">						
 		    <div class="control-group replace">
 		    	<label class="control-label">背景图片:</label>
-				<div class="control bg change" data-appid="change">
+				<div class="control bg change" data-target=0 data-appid="change">
 					<img src="${bg}" alt="" />
 					<p class="hint">点击替换图片(最佳尺寸：640 x 200 像素)</p>
 				</div>	
 			</div>
 			 <div class="control-group replace">			    	
 				<label for="" class="control-label">头像:</label>
-				<div class="control logo change" data-appid="change">
+				<div class="control logo change" style="width:80px;" data-target=1 data-appid="change">
 					<img src="${logo}" alt="" />
-					<p class="hint">点击替换图片(最佳尺寸：80 x 80 像素)</p>
 				</div>
+				<p style="padding-left:100px;" class="hint">点击替换图片(最佳尺寸：80 x 80 像素)</p>
 		    </div> 				
 		</form>    		
-	</div>			
+	</script>			
 	<!-- 橱窗 -->
-	<div class="showcase">
+	<script type='text/html' class="showcase">
 		<form action="">						
 			
 		    <div class="control-group">
@@ -537,7 +523,7 @@
 		    </div> 
 		    {{each list}}
 			    <div class="control-group options showcase replace">
-					<div class="control-choice addImg" data-appid="addImg"><img src="{{= $value.src}}" alt="" /><p class="hint">重新上传</p></div>		    	
+					<div class="control-choice change" data-target=4 data-appid="change"><img src="{{= $value.src}}" alt="" /><p class="hint">重新上传</p></div>		    	
 					<label for="" class="control-label">链接到：</label>
 					<div class="control">
 						<a class="dialog" href="javascript:void(0)" data-appid="goodsDialog">+从商品标签或微杂志中选择</a>
@@ -546,13 +532,13 @@
 		    {{/each}}   
 				
 		</form>    		
-	</div>		
+	</script>		
 	<!-- 图片广告 -->
-	<div class="imgAd">
+	<script type='text/html' class="imgAd">
 		<form action="">						
 			{{each list}}
 		    <div class="control-group options replace">
-				<div class="control-choice addImg" data-appid="addImg"><img src="{{= $value.src}}" alt="" /><p class="hint">重新上传</p></div>
+				<div class="control-choice change" data-target=2 data-appid="change"><img src="{{= $value.src}}" alt="" /><p class="hint">重新上传</p></div>
 				<label for="" class="control-label">标题：</label>
 				<div class="control">
 					<input class="input" name="imgAd" type="text" value="{{= $value.text}}" />
@@ -564,19 +550,19 @@
 				<div class="actions"><span class="delete delImgAd">×</span></div>			   
 		    </div> 
 		    {{/each}}   
-			<div class="control-group options add_imgAd addImg" data-appid="addImg">
+			<div class="control-group options add_imgAd change" data-target=2 data-appid="change">
 				<p class="description">
 					<i class="add_icon"></i>添加一个图片广告
 				</p>
 			</div>				
 		</form>    		
-	</div>			
+	</script>			
 	<!-- 图片导航 -->
-	<div class="imgNav">
+	<script type='text/html' class="imgNav">
 		<form action="">						
 			{{each list}}
 		    <div class="control-group options replace">
-				<div class="control-choice addImg" data-appid="addImg"><img src="{{= $value.src}}" alt="" /><p class="hint">重新上传</p></div>
+				<div class="control-choice change" data-target=3 data-appid="change"><img src="{{= $value.src}}" alt="" /><p class="hint">重新上传</p></div>
 				<label for="" class="control-label">文字：</label>
 				<div class="control">
 					<input class="input" name="imgNav" type="text" value="{{= $value.text}}" />
@@ -589,7 +575,7 @@
 		    {{/each}}   
 				
 		</form>    		
-	</div>		
+	</script>		
 	<!-- 文本导航 -->
 	<div class="textNav">
 		<form action="">						
@@ -672,31 +658,23 @@
 		</form>    		
 	</div>	
 	<!-- 活动图片 -->
-	<div class="img">
+	<script type='text/html' class="img">
 		<form action="">
 			<div class="control-group">
-				<label for="" class="control-label">商品库：</label>
-				<div class="control">
-					<div id="filelist">Your browser doesn't have Flash, Silverlight or HTML5 support.</div>
-					<div id="container">
-					    <a id="pickfiles" href="javascript:;"><i class="add_icon"></i>添加商品</a> 
-					    <a id="uploadfiles" href="javascript:;">上传</a>
-					</div>					
-				</div>
 			</div>
 			<div class="control-group">
 				<label for="" class="control-label">显示方式：</label>
 				<div class="control">
-					<label for="" class="radio inline"><input type="radio" name="size" value="0" checked=""/>大图</label>
-					<label for="" class="radio inline"><input type="radio" name="size" value="1" />小图</label>
-					<label for="" class="radio inline"><input type="radio" name="size" value="2" />一大两小</label>
-					<label for="" class="radio inline"><input type="radio" name="size" value="3" />列表</label>
+					<label for="radio_one" class="radio inline"><input id='radio_one' type="radio" name="size" value="0"/>大图</label>
+					<label for="radio_two" class="radio inline"><input id='radio_two' type="radio" name="size" value="1" />小图</label>
+					<label for="radio_three" class="radio inline"><input id='radio_three' type="radio" name="size" value="2" />一大两小</label>
+					<label for="radio_four" class="radio inline"><input id='radio_four' type="radio" name="size" value="3" />列表</label>
 				</div>
 			</div>
 			<div class="control-group">
 				<label for="" class="control-label">商品名：</label>
 				<div class="control">
-					<label for="" class="radio inline"><input type="checkbox" name="title" value="0" />显示商品名（小图的时候不会显示商品名）</label>
+					<label for="checkbox_one" class="radio inline"><input id='checkbox_one' type="checkbox" name="title" value="0" />显示商品名（小图的时候不会显示商品名）</label>
 				</div>
 			</div>    			
 			<div class="control-group">
@@ -709,20 +687,16 @@
 			<div class="control-group">
 				<label for="" class="control-label">选择来源：</label>
 				<div class="control">
-					<a class="dialog" href="javascript:void(0)" data-appid="goodsDialog">+从商品标签或微杂志中选择</a>
+					<button href='#' class='allProducts'>选择商品</button>
 					<p class="hint">选择商品来源后，左侧实时预览暂不支持显示其包含的商品数据</p>
+					<div id='productList' class='clearfix'>
+					</div>
+					<ul id='productPager' class='clearfix'>
+					</ul>
 				</div>
 			</div>  
-			<div class="control-group">
-				<label for="" class="control-label">显示数量：</label>
-				<div class="control">
-					<label for="" class="radio inline"><input type="radio" name="goods_number_type" value="0" checked="" />6</label>
-					<label for="" class="radio inline"><input type="radio" name="goods_number_type" value="1" />12</label>
-					<label for="" class="radio inline"><input type="radio" name="goods_number_type" value="2" />18</label>
-				</div>
-			</div>    			  			
 		</form>  		    		
-	</div>
+	</script>
 	<!-- 活动文字 -->
 	<div class="fullText">
 		<form action="">
@@ -774,6 +748,37 @@
 	  	{{/each}}
 	  </ul>
 </script>
+<script id='product-tmpl' type="text/html">
+{{each goods}}
+<li class='{{= $value.selected ? "active":""}}' data-productid={{= $value.id}}>
+    <img src='{{= $value.photo}}800x800' />
+    <p class='txt'>{{= $value.name}}</p>
+    <div class='selected'>
+        <img src='/images/selected.png' />
+    </div>
+</li>
+{{/each}}
+</script>
+
+<script id='uploadAndSelectImg' type="text/html">
+		<div>
+			<div  class="control-group">
+				
+				<div class="control">
+					<div id="filelist"></div>
+					<div id="container">
+					    <a id="pick_files" href="javascript:;"><i class="add_icon"></i>添加图片</a> 
+					    <a id="upload_files" href="javascript:;">上传</a>
+					</div>					
+				</div>
+			</div>
+			<ul class="piclist clearfix">
+				{{each list}}
+		  		<li><img src="{{= $value.src}}" alt="" /></li>
+	  		{{/each}}
+	  	</ul>
+		</div>
+</script>
 <!-- 弹窗内容 -->
 <div id="dialogContent">
 	<!-- 商品列表 -->
@@ -822,6 +827,7 @@
 </script>
 <script type="text/javascript" src="/js/jquery-1-8-3.js"></script>
 <script type="text/javascript" src='/js/JQueryUI/jquery-ui.min.js'></script>
+<script type="text/javascript" src='/js/pagination.js'></script>
 <script type="text/javascript" src="/js/jquery.tmpl.js"></script>
 <script type="text/javascript" src='/js/QRcode/qrcode-light.js'></script>
 <script type="text/javascript" src='/js/QRcode/qrgen-canvas.js'></script>

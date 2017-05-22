@@ -1,28 +1,12 @@
 <div class='img'>
 	<ul class='goods_small'>
+	{%for item in data.goods%}
 		<li>
-			<img src='/images/gg1.jpg' />
+			<a href='http://m.yst.com.cn/i/product?product_id={{item.id}}'><img src={{item.photo}}800x800 /></a>
 			<div class="product_info clearfix">
-				<span class='price'>66.00</span><span class='cart_log'></span>
+				<span class='name'>{{item.name}}</span><span class='price'>{{item.salePrice}}</span><span class='cart_log'></span>
 			</div>
 		</li>
-		<li>
-			<img src='/images/gg2.jpg' />
-			<div class="product_info clearfix">
-				<span class='price'>108.00</span><span class='cart_log'></span>
-			</div>
-		</li>
-		<li>
-			<img src='/images/gg3.jpg' />
-			<div class="product_info clearfix">
-				<span class='price'>54.00</span><span class='cart_log'></span>
-			</div>
-		</li>
-		<li>
-			<img src='/images/gg4.jpg' />
-			<div class="product_info clearfix">
-				<span class='price'>32.00</span><span class='cart_log'></span>
-			</div>
-		</li>
+		{%endfor%}
 	</ul>
 </div>

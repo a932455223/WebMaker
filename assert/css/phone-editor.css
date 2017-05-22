@@ -17,6 +17,7 @@ li {
 }
 .clearfix {
   *zoom: 1;
+  overflow: hidden;
 }
 .clearfix:before,
 .clearfix:after {
@@ -184,4 +185,113 @@ li {
   text-align: center;
   border:none;
   min-width: 60px;
+}
+
+.ui-dialog-grid .img_upload_box{
+  width:80px;
+}
+
+@font-face {
+  font-family:'iconfont';
+  src:url('../font/iconfont.eot');
+  src:url('../font/iconfont.eot?#iefix') format('embedded-opentype'),
+  url('../font/iconfont.woff') format('woff'),
+  url('../font/iconfont.ttf') format('truetype'),
+  url('../font/iconfont.svg#iconfont') format('svg');
+}
+
+
+
+.iconfont{
+   font-family:"iconfont" !important;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+} 
+
+.jiahao{
+  font-size: 48px;
+  color:#ccc;
+}
+.ui-dialog-grid #pick_image{
+  border:1px dashed #ccc;
+  height:80px;  
+  line-height: 80px;
+  text-align: center;
+  border-radius:5px;
+}
+
+#filelist{
+  padding:5px 0 10px 0px;
+}
+#productList{
+  max-height:600px;
+  overflow: scroll;
+}
+#productList li{
+  width:150px;
+  float: left;
+  position: relative;
+  margin:0 8px 8px 0;
+  padding:5px;
+  background: #fff;
+  cursor: pointer;
+}
+#productList li img{
+  width:100%;
+}
+#productList li .selected{
+  position: absolute;
+  top:5px;
+  right:5px;
+  display: none;
+}
+#productList li .selected img{
+  width:30px;
+}
+#productList li.active .selected{
+ display: block;
+}
+.allProducts{
+  padding:5px 8px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  background:#fff;
+  color:#555;
+}
+#productList li.active .selected{
+
+}
+#productList li .txt{
+  font-size:13px;
+  padding:5px 0;
+  margin:0;
+  text-align: center;
+  overflow:hidden;
+  -wegbkit-text-overflow:ellipsis;
+  text-overflow:ellipsis;
+  white-space:nowrap; 
+  width:100%;
+}
+#productPager li{
+  float: left;
+}
+
+#productPager li{
+  padding:6px 12px;
+  border:1px solid #ccc;
+  border-left: none;
+  background:#fff;
+}
+#productPager>li>a{
+  line-height: normal !important;
+  padding: 0 !important;
+}
+#productPager li:last-child{
+  border-right: 1px solid #ccc;
+  border-radius: 0 5px 5px 0;
+}
+#productPager li:first-child{
+  border-left: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
 }

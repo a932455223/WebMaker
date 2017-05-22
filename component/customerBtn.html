@@ -4,8 +4,17 @@
 <script type="text/javascript">
 	var btnStyle = {{JSON.stringify(content)}};
 	var $btn = $('.customerBtn').find('button');
-	$btn.css(btnStyle);
+	$btn.css(btnStyle); 
 	if(btnStyle['background-image']){
 		$btn.css('background-image','url('+btnStyle['background-image']+')');
+	}
+	if(btnStyle.btnUrl){
+		$btn.on('click',function(){
+			if(btnStyle.btnUrl.indexOf('http')===-1){
+				window.location.href ='http://'+btnStyle.btnUrl;
+			}else{
+				window.location.href = btnStyle.btnUrl;
+			}
+		});
 	}
 </script>

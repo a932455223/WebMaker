@@ -1,37 +1,32 @@
 {
-  "name": "webMaker",
-  "description": "html page generate",
-  "version": "0.0.1",
-  "dependencies": {
-    "assert": "^1.3.0",
-    "co": "^4.1.0",
-    "co-body": "^1.0.0",
-    "co-busboy": "^1.3.0",
-    "co-monk": "^1.0.0",
-    "co-views": "^0.2.0",
-    "koa": "^0.14.0",
-    "koa-compose": "^2.3.0",
-    "koa-csrf": "^2.1.1",
-    "koa-logger": "^1.2.1",
+  "name": "webmaker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start":"forever index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.oschina.net:simon-du/webMaker-koa.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "co-body": "^5.1.1",
+    "co-busboy": "^1.3.1",
+    "co-request": "^1.0.0",
+    "co-views": "^2.1.0",
+    "koa": "^1.4.0",
+    "koa-logger": "^1.3.1",
     "koa-route": "^1.1.4",
-    "koa-send": "^1.3.1",
-    "koa-static": "^1.4.5",
-    "monk": "^1.0.1",
-    "raw-body": "^1.2.1",
-    "save-to": "^1.0.3",
-    "streaming-json-stringify": "^1.0.0",
+    "monk": "^4.0.0",
     "swig": "^1.4.2"
   },
-  "devDependencies": {
-    "mocha": "*",
-    "should": "^3.3.2",
-    "supertest": "*"
-  },
-  "scripts": {
-    "test": "make test"
-  },
-  "engines": {
-    "node": ">= 0.11.13"
-  },
-  "license": "MIT"
+  "dependencies": {
+    "co-monk": "^1.0.0",
+    "koa-send": "^3.3.0"
+  }
 }

@@ -1,3 +1,6 @@
+if(!window.console){
+    window.console.log = function(str){}
+}
 var pagelist = [{
         show: [
             // {
@@ -79,7 +82,8 @@ var default_config = ['', {
         size: 0,
         title: "showtitle",
         price: "showprice",
-        cart: "showcart"
+        cart: "showcart",
+        products:[]
     }
 }, {
     id: 3,
@@ -280,11 +284,12 @@ $(document).ready(function() {
         var data = getAllData($list);
         $.post('/page',{pages:data,title:$('#editor_title').html().trim()}).done(function(rp){
             var url = 'http://'+window.location.host+'/page/'+rp.pageId;
+            // var url = 'www.baidu.com';
             // var url_param = encodeURIComponent(url);
             if(rp.status === 200){
                 var d = dialog({
                     title:'提示信息',
-                    content:'保存成功!:<br/>'+'访问<a id="pageLinks" style="color:#29B4F0" target="_blank" href="'+url+'" >点击这里</a><p id="QRcode" style="text-align:center;"></p>'
+                    content:'保存成功!<p style="padding:8px 0;">'+'访问<a id="pageLinks" style="color:#29B4F0" target="_blank" href="'+url+'" >'+url+'</a></p><p style="padding:8px 0;">或扫描二维码:</p><p id="QRcode" style="text-align:center;"></p>'
                 });
               
                 d.showModal();
@@ -302,5 +307,6 @@ $(document).ready(function() {
         });
 
     });
+    
 
 });

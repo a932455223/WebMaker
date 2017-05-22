@@ -1,40 +1,15 @@
 <div class="img">
-	<ul class="goods_list">
-		<li class="clearfix">
-			<div class='good-img'>
-				<img src='/images/gg1.jpg' />
-			</div>
-			<div class='good-text'>
-				<p>都市余味碧根果190g</p>
-				<p>88.00</p>
-				</div>
-		</li>
-		<li class="clearfix">
-			<div class='good-img'>
-				<img src='/images/gg2.jpg' />
-			</div>
-			<div class='good-text'>
-				<p>都市余味碧根果100g</p>
-				<p>66.00</p>
-			</div>
-		</li>
-		<li class="clearfix">
-			<div class='good-img'>
-				<img src='/images/gg3.jpg' />
-			</div>
-			<div class='good-text'>
-				<p>都市余坚果100g</p>
-				<p>99.00</p>
-			</div>
-		</li>
-		<li class="clearfix">
-			<div class='good-img'>
-				<img src='/images/gg4.jpg' />
-			</div>
-			<div class='good-text'>
-				<p>都市余味碧根果350g</p>
-				<p>120.00</p>
-			</div>
-		</li>
-	</ul>
+    <ul class="goods_list">
+        {%for item in data.goods%}
+        <li class="clearfix">
+            <div class='good-img'>
+                <a href='http://m.yst.com.cn/i/product?product_id={{item.id}}'><img src='{{item.photo}}800x800' /></a>
+            </div>
+            <div class='good-text'>
+                <p><a href='http://m.yst.com.cn/i/product?product_id={{item.id}}'>{{item.name}}</a></p>
+                <p>￥{{item.salePrice}}</p>
+            </div>
+        </li>
+        {%endfor%}
+    </ul>
 </div>
