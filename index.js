@@ -11,13 +11,12 @@ var fs = require('fs');
 var koa = require('koa');
 var swig = require('swig');
 var send = require('koa-send');
-var url = 'mongodb://localhost:27017/webMaker';
+var url = 'localhost:27017/webMaker';
 var monk = require('monk');
 var wrap = require('co-monk');
 var app = koa();
 var os = require('os');
 var path =require('path');
-var assert = require('assert');
 var request = require('co-request');
 var db = monk(url);
 swig.setDefaults({
@@ -30,7 +29,7 @@ app.use(function*(next) {
         yield send(this,__dirname +this.path);
     }
     if (this.accepts('text/css', 'text/javascript')) {
-        yield send(this, __dirname + '/assert' + this.path);
+        yield send(this, './assert' + this.path);
     }
     yield next;
 });
@@ -120,7 +119,9 @@ function* edit(id) {
 }
 
 function* index() {
-    yield send(this, __dirname + '/views/index.html');
+    console.log(__dirname)
+    // this.body = 'good'
+    yield send(this, './views/index.html');
 }
 
 /**

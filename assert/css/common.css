@@ -780,7 +780,7 @@ table.table_sku_stock th.th_code{width: 90px;}
 .phone_preview .add_field h4{text-align: center;font-size: 14px;line-height: 40px;font-weight: bold;}
 .add_field ul{color: #333;font-size: 12px;margin-left: -5px; display: table;}
 .add_field li{float: left;display: table;margin: 0 0 10px 5px;background: #fff;}
-.add_field li a{display: table-cell;width: 60px;height: 40px;color: #07d; box-sizing: border-box;border: 1px solid #d1d1d1;line-height: 14px;text-align: center;vertical-align: middle;cursor: pointer;}
+.add_field li a{display: table-cell;width: 60px;padding:0 5px;height: 40px;color: #07d; border: 1px solid #d1d1d1;line-height: 14px;text-align: center;vertical-align: middle;cursor: pointer;}
 .phone_sidebar{margin-left: 364px !important;}
 
 /*活动设计*/
