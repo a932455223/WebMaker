@@ -1,0 +1,137 @@
+*{padding: 0;margin: 0;}
+/*编辑框style*/
+#popover{
+	display: none;
+	float: left;
+	position: relative;
+	width: 480px;	
+	margin-left: 20px;
+	-moz-user-select: text;
+	-webkit-user-select: text;
+	.popover-inner{
+		position: relative;
+		min-height: 28px;
+		background: #f8f8f8;
+		border:1px solid #d1d1d1;
+		border-radius: 5px;
+		padding: 12px 10px;
+		font-size: 14px;
+		&:after{
+			content: "";
+			border-style:solid;
+			border-width:8px 10px 8px 0;
+			border-color:transparent #f8f8f8 transparent transparent;
+			position: absolute;
+			left:-10px;
+			top:20px;
+		}
+		&:before{
+			content: "";
+			border-style:solid;
+			border-width:8px 10px 8px 0;
+			border-color:transparent #d1d1d1 transparent transparent;
+			position: absolute;
+			left:-11px;
+			top:20px;
+		}
+		label{
+			cursor:default;
+			text-align:right;
+			display: block;
+			float: left;
+			padding-top: 5px;
+			line-height: 18px;
+		}		
+		input{
+			display:inline-block;
+			color:#666;
+			background: #fff;
+			border:1px solid #cccccc;
+			-webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.075);
+			-webkit-transition:border linear 0.2s, box-shadow linear 0.2s;
+			width: 206px;
+			height: 20px;
+			line-height: 20px;
+			padding: 4px 6px;
+			border-radius: 4px;
+		}
+		.input-l{
+			width: 310px;
+		}
+		.control{
+			margin-left: 90px;
+			//float: left;
+		}
+		.control-label{
+			width: 87px;
+		}
+		.control-group{
+			overflow: hidden;
+			margin-bottom: 10px;
+			&:last-of-type{
+				margin-bottom: 0;
+			}
+			&:after{
+				clear: both;
+			}
+			a{
+				display: inline-block;
+				line-height: 18px;
+				padding-top: 5px;
+			}
+			.hint{
+				font-size:12px;
+				opacity: 0.6;
+				&:hover{
+					opacity: 1;
+				}
+			}
+		}
+		.radio,.inline{
+			padding:5px 10px 0 0;
+			float: none;
+			margin-left: 10px;
+			display: inline-block;
+			vertical-align: top;
+			input[type="radio"],input[type="checkbox"]{
+				width: auto;
+				display:inline-block;
+				margin-left: -16px;
+				margin-right: 5px;
+				float: none;
+			}
+		}
+	}	
+}
+/*编辑框内容容器*/
+#popoverContent{display: none;}
+/*dialog内容容器*/
+#dialogContent{display: none;}
+
+
+/*append style*/
+#goods-three{
+  	width: 310px;
+  	margin: 0 auto;	
+	li{
+	  width: 150px;
+	  height: 150px;
+	  line-height: 150px;
+	  text-align: center;
+	  margin-bottom: 5px;
+	  background: #f5619c;
+	  float: left; 
+		&:nth-child(odd){
+			margin-left: 5px; 
+		}		
+		&:first-child{
+		    width: 310px;
+		    height: 310px;
+		    margin-bottom: 8px;
+		    background: #f5619c;
+		    line-height: 310px;
+		    text-align: center;
+		    margin-left: 0;
+		}
+	}
+}
