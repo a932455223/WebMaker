@@ -1,6 +1,9 @@
-WebMaker
-###2014-8-5 @popover
-> * 模块容器data-appid值必须与模块内容(<div id="popoverContent">下)class值一一对应<br>
-###2014-8-6 @dialog
-> * id="dialogContent"元素为所有dialog内容容器
-> * 点击class="dialog"元素触发dialog，该元素data-appid需与dialog内容对象ID一致
+#### 网页生成器
+可以通过简单的操作，生成一个手机端的页面。主要用途是生成各种活动页面，降低公司的手机端活动页面的开发成本。
+
+#### example
+![演示图](/assert/images/webmaker.gif)
+
+[点这里看Demo](http://simon-du.me:3000/)
+
+注：服务器配置低，会有些较卡。
